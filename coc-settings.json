@@ -1,0 +1,9 @@
+{
+  "diagnostic.checkCurrentLine": true,
+  "eslint.autoFixOnSave": false,
+  "Lua.diagnostics.globals": ["vim"],
+  "coc.preferences.formatOnSave": true,
+  "Lua.telemetry.enable": false,
+  "snippets.ultisnips.pythonPrompt": false,
+  "svelte.enable-ts-plugin": true
+}
