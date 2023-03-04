@@ -85,15 +85,15 @@ _G.packer_plugins = {
     path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
+  catppuccin = {
+    loaded = true,
+    path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["coc.nvim"] = {
     loaded = true,
     path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
-  },
-  everforest = {
-    loaded = true,
-    path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/everforest",
-    url = "https://github.com/sainnhe/everforest"
   },
   fzf = {
     loaded = true,
