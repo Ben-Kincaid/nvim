@@ -1,5 +1,5 @@
 {
-  "diagnostic.checkCurrentLine": true,
+  "diagnostic.checkCurrentLine": false,
   "eslint.autoFixOnSave": false,
   "Lua.diagnostics.globals": ["vim"],
   "coc.preferences.formatOnSave": true,
