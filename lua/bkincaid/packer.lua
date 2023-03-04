@@ -39,9 +39,6 @@ return require('packer').startup(function(use)
 	use { 'neoclide/coc.nvim', branch = 'release' }
 	vim.g.coc_node_path = '/Users/benkincaid/.nvm/versions/node/v18.12.1/bin/node'
 
-	use { 'pangloss/vim-javascript' }
-	use { 'maxmellon/vim-jsx-pretty' }
-
 	-- Start screen
 	use {
 		'goolord/alpha-nvim',

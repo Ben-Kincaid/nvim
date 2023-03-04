@@ -150,16 +150,6 @@ _G.packer_plugins = {
     path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
-  ["vim-javascript"] = {
-    loaded = true,
-    path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/vim-javascript",
-    url = "https://github.com/pangloss/vim-javascript"
-  },
-  ["vim-jsx-pretty"] = {
-    loaded = true,
-    path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/vim-jsx-pretty",
-    url = "https://github.com/maxmellon/vim-jsx-pretty"
-  },
   ["yuphelp.nvim"] = {
     loaded = true,
     path = "/Users/benkincaid/.local/share/nvim/site/pack/packer/start/yuphelp.nvim",
