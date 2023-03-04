@@ -6,11 +6,6 @@ require("bufferline").setup {
 				filetype = "NvimTree",
 				text = "File Explorer",
 				separator = true,
-			},
-			{
-				filetype = "fugitive",
-				text = "Git (fugitive)",
-				separator = true,
 			}
 		}
 	}

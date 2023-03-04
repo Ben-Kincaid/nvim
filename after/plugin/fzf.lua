@@ -21,7 +21,7 @@ vim.keymap.set('n', '<leader>h', fzf.help_tags, {})
 vim.keymap.set('n', '<leader>`', fzf.buffers, {})
 
 -- View git files
-vim.keymap.set('n', '<leader>zg', fzf.git_files, {})
+vim.keymap.set('n', '<leader>G', fzf.git_files, {})
 
 -- Search current working directory for word under the cursor
 vim.keymap.set('n', '<leader>F', fzf.grep_cword, {})
