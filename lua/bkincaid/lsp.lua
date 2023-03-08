@@ -195,3 +195,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = ":silent call CocAction('runCommand', 'editor.action.organizeImport')",
 	pattern = { "*.go" },
 })
+
+
+--- Typescript
+---
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+	command = ":set filetype=jsonc",
+	pattern = { "tsconfig.json", "jsconfig.json" }
+})
