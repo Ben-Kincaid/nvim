@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
 		requires = {
 			'nvim-tree/nvim-web-devicons', -- optional, for file icons
 		},
-		tag = 'nightly'           -- optional, updated every week. (see issue #1193)
+		tag = 'nightly' -- optional, updated every week. (see issue #1193)
 	}
 
 	-- Fugitive (git)
@@ -57,6 +57,10 @@ return require('packer').startup(function(use)
 	-- Marks
 	use 'toppair/reach.nvim'
 	use 'chentoast/marks.nvim'
+
+
+	-- Surround - Replace surrounding elements
+	use "tpope/vim-surround"
 
 	-- Help in floating window
 	use "Ben-Kincaid/yuphelp.nvim"
