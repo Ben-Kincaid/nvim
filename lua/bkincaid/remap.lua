@@ -24,3 +24,45 @@ vim.keymap.set("n", "<leader>R", function()
 		vim.cmd(":%s/" .. cword .. "/" .. input .. "/g")
 	end)
 end)
+
+function PushToReg(str)
+	vim.cmd('let @+="' .. str .. '"')
+	vim.notify('Copied "' .. str .. '"!')
+end
+
+function CopyFile(absolute)
+	local path
+
+	-- Determine appropriate path depth
+	if absolute then
+		path = vim.fn.expand('%:p')
+	else
+		path = vim.fn.expand("%:~")
+	end
+
+	-- Add path to registry
+	PushToReg(path)
+end
+
+-- Copy relative path
+vim.keymap.set("n", "<leader>CC", function()
+	CopyFile(false);
+end)
+
+-- Copy absolute path
+vim.keymap.set("n", "<leader>CX", function()
+	CopyFile(true);
+end)
+
+-- Copy file name
+vim.keymap.set("n", "<leader>CF", function()
+	local fn = vim.fn.expand('%:t')
+	PushToReg(fn);
+end)
+
+-- Copy file name + line row
+vim.keymap.set("n", "<leader>CL", function()
+	local fn = vim.fn.expand('%:t')
+	local ln, _ = unpack(vim.api.nvim_win_get_cursor(0))
+	PushToReg(fn .. ":" .. ln)
+end)
