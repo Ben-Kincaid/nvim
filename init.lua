@@ -1,7 +1,5 @@
 -- Plugins
 require("bkincaid.packer")
--- Status line
-require('bkincaid.lualine')
 -- Generic keymaps
 require("bkincaid.remap")
 -- Vim options
