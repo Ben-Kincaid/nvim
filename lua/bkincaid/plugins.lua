@@ -113,7 +113,14 @@ return require('packer').startup(function(use)
 		requires = "nvim-lua/plenary.nvim",
 	}
 
+	-- Null ls
+	use {
+		'jose-elias-alvarez/null-ls.nvim',
+		requires = "nvim-lua/plenary.nvim"
+	}
 
+	-- Prettier plugin
+	use('MunifTanjim/prettier.nvim')
 
 	-- Help in floating window
 	use "Ben-Kincaid/yuphelp.nvim"
