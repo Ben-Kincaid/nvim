@@ -37,7 +37,7 @@ function CopyFile(absolute)
 	if absolute then
 		path = vim.fn.expand('%:p')
 	else
-		path = vim.fn.expand("%:~")
+		path = vim.fn.fnamemodify(vim.fn.expand('%:h'), ':p:~:.')
 	end
 
 	-- Add path to registry
