@@ -1,5 +1,5 @@
 local disabled_filetypes = { 'packer', 'NvimTree', 'alpha' }
-
+local disabled_win_filetypes = { 'packer', 'NvimTree', 'alpha', 'gitcommit', 'help', 'fugitive' }
 
 require('lualine').setup({
 	sections = {
@@ -12,6 +12,12 @@ require('lualine').setup({
 	},
 	options = {
 		theme = "catppuccin",
-		disabled_filetypes = { statusline = disabled_filetypes, winbar = disabled_filetypes }
+		disabled_filetypes = { statusline = disabled_filetypes, winbar = disabled_win_filetypes, inactive_winbar = disabled_win_filetypes }
+	},
+	winbar = {
+		lualine_c = { { 'filename', file_status = true, path = 1 } }
+	},
+	inactive_winbar = {
+		lualine_c = { { 'filename', file_status = true, path = 1 } }
 	}
 })
