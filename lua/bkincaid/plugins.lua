@@ -10,7 +10,11 @@ return require('packer').startup(function(use)
 
 	-- fzf - Fuzzy finding, grep search, buffer mgmt
 	use { 'junegunn/fzf', run = ":call fzf#install()" }
-	use { 'ibhagwan/fzf-lua', requires = { 'nvim-tree/nvim-web-devicons' } }
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
+	use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
 	-- Status line
 	use {
@@ -78,7 +82,7 @@ return require('packer').startup(function(use)
 		run = function() vim.fn["mkdp#util#install"]() end,
 	})
 
- 	-- Marks
+	-- Marks
 	use 'chentoast/marks.nvim'
 
 	-- Neorg - note taking, organization
