@@ -31,20 +31,3 @@ require 'marks'.setup {
 	},
 	mappings = {}
 }
-
-
-
--- Configure reach (UI for navigating marks)
-require('reach').setup({
-	notifications = true
-})
--- require('reach.config').setup()
--- require('reach.highlights').setup()
--- require('reach').marks()
-
--- Delete all marks
-vim.keymap.set("n", "<leader>mm", "<cmd>ReachOpen marks<cr>")
--- Delete all marks (local & global)
-vim.keymap.set("n", "<leader>mD", "<cmd>delm! | delm A-Z0-9<cr>")
--- Delete all marks (local)
-vim.keymap.set("n", "<leader>md", "<cmd>delm!<cr>")
