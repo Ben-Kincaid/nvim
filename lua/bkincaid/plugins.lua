@@ -122,6 +122,10 @@ return require('packer').startup(function(use)
 	-- Prettier plugin
 	use('MunifTanjim/prettier.nvim')
 
+	-- Notify
+	use 'rcarriga/nvim-notify'
+	vim.notify = require('notify')
+
 	-- Help in floating window
 	use "Ben-Kincaid/yuphelp.nvim"
 end)

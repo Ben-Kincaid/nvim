@@ -87,7 +87,7 @@ vim.keymap.set('n', '<leader>df', function()
 		if ok then
 			builtin.live_grep({ cwd = cwd })
 		else
-			vim.notify('"' .. cwd .. '" Does not exist.')
+			vim.notify('"' .. cwd .. '" Does not exist.', "error", { title = "Search in directory" })
 		end
 	end)
 end)

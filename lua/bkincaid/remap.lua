@@ -23,12 +23,13 @@ vim.keymap.set("n", "<leader>R", function()
 		prompt = 'Replace all "' .. cword .. '" with > '
 	}, function(input)
 		vim.cmd(":%s/" .. cword .. "/" .. input .. "/g")
+		vim.notify("Replaced all instances of \"" .. cword .. "\" with \"" .. input .. "\".", "info", { title = "Replace \"" .. cword .. "\"" })
 	end)
 end)
 
 function PushToReg(str)
 	vim.cmd('let @+="' .. str .. '"')
-	vim.notify('Copied "' .. str .. '"!')
+	vim.notify('Copied "' .. str .. '"!', 'info', { title = "File path copied." })
 end
 
 function CopyFile(absolute)
@@ -39,6 +40,11 @@ function CopyFile(absolute)
 		path = vim.fn.expand('%:p')
 	else
 		path = vim.fn.expand("%:.")
+	end
+
+	if path == "" then
+		vim.notify("No file in current buffer.", "error", { title = "File path copy failed." })
+		return
 	end
 
 	-- Add path to registry
