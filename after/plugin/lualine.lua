@@ -1,4 +1,4 @@
-local disabled_filetypes = { 'packer', 'NvimTree', 'alpha', 'help' }
+local disabled_filetypes = { 'packer', 'NvimTree', 'alpha' }
 
 
 require('lualine').setup({
