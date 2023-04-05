@@ -63,7 +63,6 @@ return require('packer').startup(function(use)
 	use { 'hrsh7th/cmp-nvim-lsp' }
 	use { 'saadparwaiz1/cmp_luasnip' }
 
-
 	-- Start screen
 	use {
 		'goolord/alpha-nvim',
@@ -79,14 +78,8 @@ return require('packer').startup(function(use)
 		run = function() vim.fn["mkdp#util#install"]() end,
 	})
 
-	-- Marks
-	use 'toppair/reach.nvim'
+ 	-- Marks
 	use 'chentoast/marks.nvim'
-
-
-	-- Surround - Replace surrounding elements
-	use "tpope/vim-surround"
-
 
 	-- Neorg - note taking, organization
 	use {
