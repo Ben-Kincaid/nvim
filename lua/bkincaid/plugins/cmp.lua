@@ -12,7 +12,7 @@ local M = {
 
 
 function M.config()
-	require('bkincaid.lsp.cmp')
+	require('bkincaid.plugins.lsp.cmp')
 end
 
 return M
