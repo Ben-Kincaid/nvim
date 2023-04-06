@@ -1,9 +1,9 @@
-local M = {	
+local M = {
     'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
 }
 
-function M.config()	
+function M.config()
 	local alpha = require("alpha")
 	local startify = require("alpha.themes.startify")
 	startify.section.header.val = {
