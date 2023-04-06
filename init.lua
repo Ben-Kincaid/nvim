@@ -1,10 +1,8 @@
--- Plugins
-require("bkincaid.plugins")
--- Generic keymaps
-require("bkincaid.remap")
 -- Vim options
 require("bkincaid.rules")
+-- Generic keymaps
+require("bkincaid.remap")
+-- Plugins
+require("bkincaid.plugins")
 -- Tmux integration
 require("bkincaid.tmux")
--- LSP Initialization
-require("bkincaid.lsp")
