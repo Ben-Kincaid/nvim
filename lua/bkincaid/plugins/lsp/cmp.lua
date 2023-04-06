@@ -12,7 +12,6 @@ cmp.setup({
 		{ name = 'buffer',  keyword_length = 5 },
 		{ name = 'path' },
 		{ name = 'luasnip' },
-		{ name = 'neorg' }
 	},
 	mapping = cmp.mapping.preset.insert({
 		['<C-Space>'] = cmp.mapping.complete(),
