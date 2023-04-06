@@ -37,16 +37,18 @@ local yuphelp = require('bkincaid.plugins.yuphelp')
 -- Create table of plugin configs
 local plugins = {
 	-- Core plugins
-	{ 'nvim-lua/plenary.nvim' },
+	{ 'nvim-lua/plenary.nvim' }, -- Used by multiple plugins,
+	{ 'nvim-tree/nvim-web-devicons' }, -- Enhanced font icons
+
 
 	-- Colors
-	colorscheme,
-	colorizer,
+	colorscheme, -- Setup & define color scheme
+	colorizer, -- Plugin for visualizing hex/rgb colors
 
 	-- fzf - Fuzzy finding, grep search, buffer mgmt
 	telescope,
 	{ 'junegunn/fzf',                             build = ":call fzf#install()" },
-	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Allows us to use fzf as picker for telescope
 
 	-- Status line
 	lualine,
@@ -73,11 +75,10 @@ local plugins = {
 
 	-- Completion
 	cmp,
-	{ 'hrsh7th/nvim-cmp' },
-	{ 'hrsh7th/cmp-buffer' },
-	{ 'hrsh7th/cmp-path' },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'saadparwaiz1/cmp_luasnip' },
+	{ 'hrsh7th/cmp-buffer' }, -- Completion for buffer content
+	{ 'hrsh7th/cmp-path' }, -- Completion for filesystem paths
+	{ 'hrsh7th/cmp-nvim-lsp' }, -- Completion for lsp
+	{ 'saadparwaiz1/cmp_luasnip' }, -- Completion for snippets
 
 	-- Start screen
 	alpha,
@@ -90,11 +91,10 @@ local plugins = {
 
 	-- Null ls & related plugins
 	nullls,
-	{ 'MunifTanjim/prettier.nvim' },
+	{ 'MunifTanjim/prettier.nvim' }, -- Enhance prettier nullls experience
 
 	-- Notify
 	notify,
-	'rcarriga/nvim-notify',
 
 	-- Help in floating window
 	yuphelp,
