@@ -1,9 +1,6 @@
 local M = {	'chentoast/marks.nvim' }
 
-local tmp = ""
-
-
-function M.config() 
+function M.config()
 	-- Configure marks.nvim (Sign column, mark previews)
 	require 'marks'.setup {
 		-- which builtin marks to show. default {}
@@ -35,8 +32,13 @@ function M.config()
 			-- defaults to false.
 			annotate = false,
 		},
-		mappings = {}
+		mappings = {
+
+		}
 	}
+
+	-- Delete all marks
+	vim.keymap.set("n", "dm*", "<cmd>delm a-zA-Z0-9<CR>")
 end
 
 
