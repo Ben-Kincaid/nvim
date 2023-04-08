@@ -1,6 +1,7 @@
 local M = {
 	"neovim/nvim-lspconfig",
-	lazy = true
+	lazy = false,
+	priority = 998
 }
 
 
@@ -81,10 +82,9 @@ function M.config()
 	-- Svelte
 	lspconfig.svelte.setup {}
 
-	-- TailwindCSS
-	lspconfig.tailwindcss.setup {}
 
-	-- Trigger remaps
+
+	-- ## Trigger remaps
 	require('bkincaid.plugins.lsp.remap')
 end
 
