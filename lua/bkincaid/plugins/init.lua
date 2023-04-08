@@ -37,13 +37,13 @@ local yuphelp = require('bkincaid.plugins.yuphelp')
 -- Create table of plugin configs
 local plugins = {
 	-- Core plugins
-	{ 'nvim-lua/plenary.nvim' }, -- Used by multiple plugins,
+	{ 'nvim-lua/plenary.nvim' },      -- Used by multiple plugins,
 	{ 'nvim-tree/nvim-web-devicons' }, -- Enhanced font icons
 
 
 	-- Colors
 	colorscheme, -- Setup & define color scheme
-	colorizer, -- Plugin for visualizing hex/rgb colors
+	colorizer,  -- Plugin for visualizing hex/rgb colors
 
 	-- fzf - Fuzzy finding, grep search, buffer mgmt
 	telescope,
@@ -75,9 +75,9 @@ local plugins = {
 
 	-- Completion
 	cmp,
-	{ 'hrsh7th/cmp-buffer' }, -- Completion for buffer content
-	{ 'hrsh7th/cmp-path' }, -- Completion for filesystem paths
-	{ 'hrsh7th/cmp-nvim-lsp' }, -- Completion for lsp
+	{ 'hrsh7th/cmp-buffer' },      -- Completion for buffer content
+	{ 'hrsh7th/cmp-path' },        -- Completion for filesystem paths
+	{ 'hrsh7th/cmp-nvim-lsp' },    -- Completion for lsp
 	{ 'saadparwaiz1/cmp_luasnip' }, -- Completion for snippets
 
 	-- Start screen
