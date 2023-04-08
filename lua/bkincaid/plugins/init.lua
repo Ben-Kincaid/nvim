@@ -21,7 +21,7 @@ local telescope = require('bkincaid.plugins.telescope')
 local lualine = require('bkincaid.plugins.lualine')
 local bufferline = require('bkincaid.plugins.bufferline')
 local treesitter = require('bkincaid.plugins.treesitter')
-local tree = require('bkincaid.plugins.nvimtree')
+local nvimtree = require('bkincaid.plugins.nvimtree')
 local fugitive = require('bkincaid.plugins.fugitive')
 local lsp = require('bkincaid.plugins.lsp')
 local mason = require('bkincaid.plugins.mason')
@@ -30,22 +30,21 @@ local marks = require('bkincaid.plugins.marks')
 local luasnip = require('bkincaid.plugins.luasnip');
 local cmp = require('bkincaid.plugins.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
-local nullls = require('bkincaid.plugins.null');
+local null = require('bkincaid.plugins.null');
 local notify = require('bkincaid.plugins.notify');
 local yuphelp = require('bkincaid.plugins.yuphelp')
 
 -- Create table of plugin configs
 local plugins = {
 	-- Core plugins
-	{ 'nvim-lua/plenary.nvim' },      -- Used by multiple plugins,
+	{ 'nvim-lua/plenary.nvim' },      -- helper library used by multiple plugins,
 	{ 'nvim-tree/nvim-web-devicons' }, -- Enhanced font icons
-
 
 	-- Colors
 	colorscheme, -- Setup & define color scheme
 	colorizer,  -- Plugin for visualizing hex/rgb colors
 
-	-- fzf - Fuzzy finding, grep search, buffer mgmt
+	-- Fuzzy finding, grep search, buffer mgmt
 	telescope,
 	{ 'junegunn/fzf',                             build = ":call fzf#install()" },
 	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Allows us to use fzf as picker for telescope
@@ -60,7 +59,7 @@ local plugins = {
 	treesitter,
 
 	-- File Explorer
-	tree,
+	nvimtree,
 
 	-- Fugitive (git)
 	fugitive,
@@ -90,7 +89,7 @@ local plugins = {
 	marks,
 
 	-- Null ls & related plugins
-	nullls,
+	null,
 	{ 'MunifTanjim/prettier.nvim' }, -- Enhance prettier nullls experience
 
 	-- Notify
