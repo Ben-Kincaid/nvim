@@ -27,7 +27,6 @@ function M.config()
 		end
 	})
 
-
 	-- Golang
 	lspconfig.gopls.setup {}
 
@@ -82,9 +81,10 @@ function M.config()
 	-- Svelte
 	lspconfig.svelte.setup {}
 
+	-- Scala
+	lspconfig.metals.setup{}
 
-
-	-- ## Trigger remaps
+	-- ## Trigger remaps ##
 	require('bkincaid.plugins.lsp.remap')
 end
 
