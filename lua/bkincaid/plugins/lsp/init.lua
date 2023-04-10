@@ -19,7 +19,13 @@ function M.config()
 	}
 
 	-- TS/JS
-	lspconfig.tsserver.setup {}
+	lspconfig.tsserver.setup {
+		settings = {
+			diagnostics = {
+				ignoredCodes = { 8010, 8002, 8003, 8004, 8005, 8006, 8008, 8009, 8011, 8012, 8013, 8016 }
+			}
+		}
+	}
 	vim.api.nvim_create_autocmd("BufRead", {
 		pattern = "tsconfig.json",
 		callback = function()
@@ -29,6 +35,11 @@ function M.config()
 
 	-- Golang
 	lspconfig.gopls.setup {}
+
+
+	-- PHP
+	lspconfig.phpactor.setup{}
+
 
 	-- Lua
 	lspconfig.lua_ls.setup {
@@ -89,4 +100,3 @@ function M.config()
 end
 
 return M
-
