@@ -36,10 +36,8 @@ function M.config()
 	-- Golang
 	lspconfig.gopls.setup {}
 
-
 	-- PHP
 	lspconfig.phpactor.setup{}
-
 
 	-- Lua
 	lspconfig.lua_ls.setup {
