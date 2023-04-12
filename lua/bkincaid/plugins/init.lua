@@ -32,8 +32,9 @@ local cmp = require('bkincaid.plugins.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
 local null = require('bkincaid.plugins.null');
 local notify = require('bkincaid.plugins.notify');
-local yuphelp = require('bkincaid.plugins.yuphelp')
 local octo = require('bkincaid.plugins.octo');
+local yuphelp = require('bkincaid.plugins.yuphelp');
+local copilot = require('bkincaid.plugins.copilot');
 
 -- Create table of plugin configs
 local plugins = {
@@ -101,6 +102,9 @@ local plugins = {
 
 	-- Help in floating window
 	yuphelp,
+
+	-- Copilot
+	copilot,
 }
 
 -- Initialize lazy with plugins
