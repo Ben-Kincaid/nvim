@@ -1,5 +1,5 @@
 ## Ben Kincaid's "Sane" Neovim Config
-This repo houses my daily neovim config. It is built to provide a robust programming & text-editing experience that you would expect from any other modern text editor, while not conflating itself with too much IDE-like functionality. It is most efficient with a terminal-based workflow, preferably with the [tmux](https://github.com/tmux/tmux/wiki) session manager.
+This repo contains my daily neovim config. It is built to provide a robust programming & text-editing experience that you would expect from any other modern text editor, while not conflating itself with too much IDE-like functionality. It is most efficient with a terminal-based workflow, preferably with the [tmux](https://github.com/tmux/tmux/wiki) session manager.
 
 #### Core features
 - Lazy-loaded plugins via [lazy.nvim](https://github.com/folke/lazy.nvim).
