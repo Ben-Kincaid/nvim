@@ -19,7 +19,7 @@ function M.config()
 			end, { expr = true, remap = true })
 
 			-- Show diff for current file
-			vim.keymap.set('n', '<leader>fd', '<cmd>Gitsigns diffthis<CR>')
+			vim.keymap.set('n', 'fd', '<cmd>Gitsigns diffthis<CR>')
 		end
 	};
 
