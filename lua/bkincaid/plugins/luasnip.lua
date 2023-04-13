@@ -6,6 +6,26 @@ local M = {
 	build = "make install_jsregexp"
 }
 
+function CreateSvelteComponentSnippet()
+	local ls = require("luasnip")
+	local text = ls.text_node;
+	local insert = ls.insert_node;
+
+	-- The snippet table to be returned
+	local snippet = {}
+
+
+	table.insert(snippet, text({ '<script lang="ts">', '</script>' }))
+
+	table.insert(snippet, text({ '', '' }))
+	table.insert(snippet, insert(0))
+	table.insert(snippet, text({ '', '' }))
+
+	table.insert(snippet, text({ '<style lang="scss">', '</style>' }))
+
+	return snippet;
+end
+
 -- Create snippet object for a React component skeleton
 function CreateReactComponentSnippet(opts)
 	local ls = require("luasnip")
@@ -98,6 +118,16 @@ function M.config()
 		}, CreateReactComponentSnippet({ ts = true, export = false })),
 	})
 	ls.filetype_extend("typescriptreact", { "typescript" })
+
+
+	-- Svelte snippets
+	ls.add_snippets("svelte", {
+		ls.snippet({
+			trig = "svtc",
+			namr = "svelte_ts_component",
+			dscr = "Create a Svelte component (Typescript)."
+		}, CreateSvelteComponentSnippet())
+	})
 
 	-- MD Snippets
 	ls.add_snippets("markdown",
