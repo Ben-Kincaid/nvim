@@ -1,6 +1,8 @@
 ## Ben Kincaid's "Sane" Neovim Config
 This repo contains my daily neovim config. It is built to provide a robust programming & text-editing experience that you would expect from any other modern text editor, while not conflating itself with too much IDE-like functionality. It is most efficient with a terminal-based workflow, preferably with the [tmux](https://github.com/tmux/tmux/wiki) session manager.
 
+![](docs/meme.jpg)
+
 #### Core features
 - Lazy-loaded plugins via [lazy.nvim](https://github.com/folke/lazy.nvim).
 - LSP integration (via [Neovims native LSP](https://neovim.io/doc/user/lsp.html)) with help from [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig).
@@ -25,4 +27,4 @@ This repo contains my daily neovim config. It is built to provide a robust progr
       - `[plugin].lua`: Individual plugin definition table.
 
 #### Contributions
-Since this is my personal configuration, i'm not open to contributions to this repo. However, feel free to fork this repo as a vanilla starting point to your own Neovim config, or start a [discussion](https://github.com/Ben-Kincaid/nvim/discussions) if you any tips or recommendations in ways to improve the current config. 
+Since this is my personal configuration, i'm not open to contributions to this repo. However, feel free to fork this repo as a "vanilla" starting point to your own Neovim config, or start a [discussion](https://github.com/Ben-Kincaid/nvim/discussions) if any tips or recommendations in ways to improve the current config. 
