@@ -1,8 +1,6 @@
 local M = { 'voldikss/vim-floaterm' }
 
-
 local test = "wow"
-print(test)
 
 function M.config()
 	-- Let's revisit this; fugitive + gitsigns workflow is pretty nice

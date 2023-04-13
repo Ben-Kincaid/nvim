@@ -97,7 +97,7 @@ function M.config()
 	require('bkincaid.plugins.lsp.remap')
 
 
-	-- Set up diagnostic config
+	-- ## Set up diagnostic config ##
 	vim.diagnostic.config({
 		severity_sort = true,
 		float = {
