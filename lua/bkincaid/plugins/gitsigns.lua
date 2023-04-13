@@ -17,6 +17,9 @@ function M.config()
 				vim.schedule(function() gs.prev_hunk() end)
 				return '<Ignore>'
 			end, { expr = true })
+
+			-- Show diff for current file
+			vim.keymap.set('n', '<leader>fd', '<cmd>Gitsigns diffthis<CR>')
 		end
 	};
 

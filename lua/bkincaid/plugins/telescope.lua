@@ -69,7 +69,7 @@ function M.config()
 	-- Search current working directory for word under cursor
 	vim.keymap.set("n", "<leader>F", builtin.grep_string, {})
 	-- Search in directory relative to project root
-	vim.keymap.set('n', '<leader>df', function()
+	vim.keymap.set('n', '<leader>id', function()
 		-- Check if a given path actually exists
 		local function exists(file)
 			local ok, err = os.rename(file, file)
