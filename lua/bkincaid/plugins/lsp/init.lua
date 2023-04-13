@@ -37,7 +37,7 @@ function M.config()
 	lspconfig.gopls.setup {}
 
 	-- PHP
-	lspconfig.phpactor.setup{}
+	lspconfig.phpactor.setup {}
 
 	-- Lua
 	lspconfig.lua_ls.setup {
@@ -91,10 +91,23 @@ function M.config()
 	lspconfig.svelte.setup {}
 
 	-- Scala
-	lspconfig.metals.setup{}
+	lspconfig.metals.setup {}
 
 	-- ## Trigger remaps ##
 	require('bkincaid.plugins.lsp.remap')
+
+
+	-- Set up diagnostic config
+	vim.diagnostic.config({
+		severity_sort = true,
+		float = {
+			focusable = true,
+			-- Display the diagnostic source
+			source = "always",
+			-- Don't show any headers on disagnostic float window
+			header = "",
+		},
+	})
 end
 
 return M
