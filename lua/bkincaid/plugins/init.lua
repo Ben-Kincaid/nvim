@@ -105,6 +105,9 @@ local plugins = {
 
 	-- Copilot
 	copilot,
+
+	-- Comments
+	{ 'tpope/vim-commentary' }
 }
 
 -- Initialize lazy with plugins
