@@ -27,6 +27,26 @@ function M.config()
   function _TERMINAL_LAZYGIT()
     lazygit:toggle()
   end
+
+  local node = Terminal:new({ cmd = "node", hidden = true })
+  function _NODE_TERMINAL()
+    node:toggle()
+  end
+
+  vim.api.nvim_create_user_command("TerminalWhois", function()
+    vim.ui.input({
+      prompt = "Check domain on WHOIS > "
+    }, function(domain)
+      local whois = Terminal:new({
+        cmd = "whois " .. domain,
+        hidden = true,
+      })
+      whois:toggle()
+    end)
+  end, {})
+
+  vim.api.nvim_create_user_command("TerminalLazyGit", _TERMINAL_LAZYGIT, {})
+  vim.api.nvim_create_user_command("TerminalNode", _NODE_TERMINAL, {})
 end
 
 return M

@@ -35,8 +35,9 @@ local notify = require('bkincaid.plugins.notify');
 local octo = require('bkincaid.plugins.octo');
 local yuphelp = require('bkincaid.plugins.yuphelp');
 local copilot = require('bkincaid.plugins.copilot');
-local floaterm = require('bkincaid.plugins.floaterm');
+local toggleterm = require('bkincaid.plugins.toggleterm');
 local gitsigns = require('bkincaid.plugins.gitsigns');
+local treesitter_context = require('bkincaid.plugins.treesitter-context')
 
 -- Create table of plugin configs
 local plugins = {
@@ -61,6 +62,7 @@ local plugins = {
 
 	-- Treesitter
 	treesitter,
+  treesitter_context,
 
 	-- File Explorer
 	nvimtree,
@@ -111,8 +113,8 @@ local plugins = {
 	-- Comments
 	{ 'tpope/vim-commentary' },
 
-	-- Floaterm
-	floaterm,
+	-- Integrated terminal 
+	toggleterm,
 
 	-- Git signs
 	gitsigns
