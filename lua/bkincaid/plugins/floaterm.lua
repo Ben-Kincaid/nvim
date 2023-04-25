@@ -1,12 +1,32 @@
-local M = { 'voldikss/vim-floaterm' }
-
-local test = "wow"
+local M = { 'akinsho/toggleterm.nvim', version = '*' }
 
 function M.config()
-	-- Let's revisit this; fugitive + gitsigns workflow is pretty nice
-	-- Lazygit seems great but i don't like having different keybindings for something that behaves like a nvim plugin with floaterm
-	-- vim.keymap.set("n", "<leader>tg", ":FloatermNew --width=0.85 --height=0.85 lazygit<CR>", { noremap = true, silent = true })
-end
+  require('toggleterm').setup({
+    size = 20,
+    open_mapping = [[<c-t>]],
+    hide_numbers = true,
+    shade_filetypes = {},
+    persist_size = true,
+    direction = "float",
+    close_on_exit = true,
+    shell = vim.o.shell,
+    float_opts = {
+      border = 'curved',
+      width = 120,
+      height = 30,
+      winblend = 3,
+      highlights = {
+        border = "Normal",
+        background = "Normal",
+      }
+    }
+  })
+  local Terminal = require("toggleterm.terminal").Terminal
+  local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
 
+  function _TERMINAL_LAZYGIT()
+    lazygit:toggle()
+  end
+end
 
 return M
