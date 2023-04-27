@@ -96,6 +96,17 @@ function M.config()
   -- Terraform
   lspconfig.terraformls.setup {}
 
+  -- YAML
+  lspconfig.yamlls.setup {
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+        },
+      },
+    }
+  }
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
