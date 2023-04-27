@@ -9,6 +9,7 @@ local M = {
 
 function M.config()
 	-- ## null-ls: Supporting lagnuages that dont follow LSP ##"camera_offset"   "226.06 73.87 64.82"
+  local null = require("null-ls");
 	local lsp_formatting = function(bufnr)
 		vim.lsp.buf.format({
 			filter = function(client)
@@ -37,6 +38,10 @@ function M.config()
 	end
 
 	require("null-ls").setup({
+    sources = {
+      null.builtins.formatting.pint,
+      null.builtins.formatting.phpcsfixer
+    },
 		on_attach = on_attach
 	})
 
