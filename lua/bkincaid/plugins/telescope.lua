@@ -15,7 +15,7 @@ function M.config()
     previewer = false,
     layout_config = {
       anchor = "N",
-      width = 0.25
+      width = 90
     }
   }
 
