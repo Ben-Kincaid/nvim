@@ -2,11 +2,9 @@ local M = {
   'nvim-lualine/lualine.nvim'
 }
 
-
 function M.config()
   local disabled_filetypes = { 'packer', 'NvimTree', 'alpha' }
   local disabled_win_filetypes = { 'packer', 'NvimTree', 'alpha', 'gitcommit', 'help', 'fugitive' }
-
 
   require('lualine').setup({
     sections = {
