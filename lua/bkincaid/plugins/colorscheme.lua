@@ -1,14 +1,7 @@
 local M = { "EdenEast/nightfox.nvim", lazy = false, priority = 1000 }
 
-sdfsdf
-
-
-
-
-
-
-
 function M.config()
+
   -- Default options
   require('nightfox').setup({
     options = {
