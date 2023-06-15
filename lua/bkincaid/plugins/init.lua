@@ -99,7 +99,6 @@ local plugins = {
 
 	-- Null ls & related plugins
 	null,
-	{ 'MunifTanjim/prettier.nvim' }, -- Enhance prettier nullls experience
 
 	-- Notify
 	notify,
