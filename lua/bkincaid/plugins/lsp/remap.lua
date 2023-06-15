@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
       end
     end
 
-    -- Create commands to toggle format on save
+    -- Create commands to toggle format on save & check current setting
     vim.api.nvim_create_user_command("LspFormatOnSave", function(cmd)
       if cmd.args == "on" then
         toggle_format_on_save(true)
@@ -85,6 +85,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     vim.api.nvim_create_user_command("LspFormatOnSaveToggle", function()
       toggle_format_on_save(not fos)
+    end, { nargs = 0 })
+
+    vim.api.nvim_create_user_command("LspFormatOnSaveInfo", function()
+      vim.notify("Format on save is " .. (fos and "enabled" or "disabled"), vim.log.levels.INFO, {
+        title = "LSP",
+      });
     end, { nargs = 0 })
 
     -- Trigger format on save toggle based on default FOS
