@@ -30,6 +30,7 @@ function M.config()
   require('telescope').setup {
     pickers = {
       find_files = mini_dropdown,
+      marks = bottom_panel,
       live_grep = bottom_panel,
       help_tags = bottom_panel,
       buffers = mini_dropdown,
@@ -63,6 +64,8 @@ function M.config()
   vim.keymap.set('n', '<leader>`', builtin.buffers, {})
   -- Search current working directory for word under cursor
   vim.keymap.set("n", "<leader>F", builtin.grep_string, {})
+  -- View all active marks
+  vim.keymap.set("n", "<leader>m", builtin.marks, {})
   -- Search in directory relative to project root
   vim.keymap.set('n', '<leader>id', function()
     -- Check if a given path actually exists
