@@ -73,8 +73,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.api.nvim_create_user_command("LspFormatOnSave", function(cmd)
       if cmd.args == "on" then
         toggle_format_on_save(true)
-      else
+      elseif cmd.args == "off" then
         toggle_format_on_save(false)
+      else
+        vim.notify("Invalid argument: " .. cmd.args, vim.log.levels.ERROR, {
+          title = "LSP",
+        });
       end
     end, {
       nargs = 1,
