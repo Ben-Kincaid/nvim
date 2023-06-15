@@ -7,6 +7,20 @@ vim.keymap.set("n", "<leader>d", "<cmd>bd<cr>")
 vim.keymap.set("n", "<leader>s", "<cmd>w<cr>")
 vim.keymap.set("n", "<leader>X", "<cmd>qa!<cr>")
 
+-- Move selection up & down
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Keep cursor in the middle when pd/pu 
+vim.keymap.set("n", "<C-d>", "<C-d>zz");
+vim.keymap.set("n", "<C-u>", "<C-u>zz");
+
+-- Keep search terms in the middle
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Paste in visual while not storing deleted text in register
+vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- Use ]b and [b to navigate buffers
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>")
@@ -16,16 +30,7 @@ vim.keymap.set("n", "[b", "<cmd>bprev<cr>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Replace all instances of cursor word
-vim.keymap.set("n", "<leader>R", function()
-	local cword = vim.call('expand', '<cword>')
-
-	vim.ui.input({
-		prompt = 'Replace all "' .. cword .. '" with > '
-	}, function(input)
-		vim.cmd(":%s/" .. cword .. "/" .. input .. "/g")
-		vim.notify("Replaced all instances of \"" .. cword .. "\" with \"" .. input .. "\".", "info", { title = "Replace \"" .. cword .. "\"" })
-	end)
-end)
+vim.keymap.set("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 function PushToReg(str)
 	vim.cmd('let @+="' .. str .. '"')
