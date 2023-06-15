@@ -39,6 +39,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
     -- Handle dynamic "format on save" functionality
+    local function supports_format(client)
+      if
+          client.config
+          and client.config.capabilities
+          and client.config.capabilities.documentFormattingProvider == false
+      then
+        return false
+      end
+      return client.supports_method("textDocument/formatting") or client.supports_method("textDocument/rangeFormatting")
+    end
+
     local function toggle_format_on_save(state, log)
       -- If not provided, default 'log' to true
       log = log == nil and true or log
@@ -51,7 +62,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
           pattern = "<buffer>",
           group = fmt_group,
           callback = function()
-            vim.lsp.buf.format { async = false }
+            local bufnr = vim.api.nvim_get_current_buf()
+            local clients = vim.lsp.get_active_clients({ bufnr = bufnr })
+            for _, client in ipairs(clients) do
+              if supports_format(client) then
+                vim.lsp.buf.format { async = false }
+              end
+            end
           end,
         })
         if log then
