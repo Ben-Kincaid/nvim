@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', '<space><Enter>', function()
       vim.lsp.buf.format { async = true }
     end, opts)
-    vim.keymap.set('v', '<leader>=', vim.lsp.buf.format, { silent = true, buffer = 0, normal = true })
+    vim.keymap.set('v', '<leader>=', vim.lsp.buf.format, { silent = true, buffer = 0 })
 
 
     -- Handle dynamic "format on save" functionality
