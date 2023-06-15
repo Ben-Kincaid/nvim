@@ -1,7 +1,7 @@
 local M = {
   "neovim/nvim-lspconfig",
   lazy = false,
-  priority = 998
+  priority = 902
 }
 
 
@@ -61,14 +61,7 @@ function M.config()
   }
 
   -- ESLint
-  lspconfig.eslint.setup({
-    on_attach = function(_, bufnr)
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        buffer = bufnr,
-        command = "EslintFixAll",
-      })
-    end,
-  })
+  lspconfig.eslint.setup{}
 
   -- CSS
   local capabilities = vim.lsp.protocol.make_client_capabilities()
