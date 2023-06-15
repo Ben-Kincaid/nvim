@@ -51,7 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
           pattern = "<buffer>",
           group = fmt_group,
           callback = function()
-            vim.lsp.buf.format { async = true }
+            vim.lsp.buf.format { async = false }
           end,
         })
         if log then
