@@ -92,7 +92,7 @@ function M.config()
       if ok then
         builtin.live_grep({ cwd = cwd })
       else
-        vim.notify('"' .. cwd .. '" Does not exist.', "error", { title = "Search in directory" })
+        vim.notify('"' .. cwd .. '" Does not exist.', vim.log.levels.ERROR, { title = "Search in directory" })
       end
     end)
   end)

@@ -10,7 +10,7 @@ vim.keymap.set("n", "<leader>X", "<cmd>qa!<cr>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- Keep cursor in the middle when pd/pu 
+-- Keep cursor in the middle when pd/pu
 vim.keymap.set("n", "<C-d>", "<C-d>zz");
 vim.keymap.set("n", "<C-u>", "<C-u>zz");
 
@@ -32,48 +32,48 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 function PushToReg(str)
-	vim.cmd('let @+="' .. str .. '"')
-	vim.notify('Copied "' .. str .. '"!', 'info', { title = "File path copied." })
+  vim.cmd('let @+="' .. str .. '"')
+  vim.notify('Copied "' .. str .. '"!', vim.log.levels.INFO, { title = "File path copied." })
 end
 
 function CopyFile(absolute)
-	local path
+  local path
 
-	-- Determine appropriate path depth
-	if absolute then
-		path = vim.fn.expand('%:p')
-	else
-		path = vim.fn.expand("%:.")
-	end
+  -- Determine appropriate path depth
+  if absolute then
+    path = vim.fn.expand('%:p')
+  else
+    path = vim.fn.expand("%:.")
+  end
 
-	if path == "" then
-		vim.notify("No file in current buffer.", "error", { title = "File path copy failed." })
-		return
-	end
+  if path == "" then
+    vim.notify("No file in current buffer.", vim.log.levels.ERROR, { title = "File path copy failed." })
+    return
+  end
 
-	-- Add path to registry
-	PushToReg(path)
+  -- Add path to registry
+  PushToReg(path)
 end
 
 -- Copy relative path
 vim.keymap.set("n", "<leader>CC", function()
-	CopyFile(false);
+  CopyFile(false);
 end)
 
 -- Copy absolute path
 vim.keymap.set("n", "<leader>CX", function()
-	CopyFile(true);
+  CopyFile(true);
 end)
 
 -- Copy file name
 vim.keymap.set("n", "<leader>CF", function()
-	local fn = vim.fn.expand('%:t')
-	PushToReg(fn);
+  local fn = vim.fn.expand('%:t')
+  PushToReg(fn);
 end)
 
 -- Copy file name + line row
 vim.keymap.set("n", "<leader>CL", function()
-	local fn = vim.fn.expand('%:t')
-	local ln, _ = unpack(vim.api.nvim_win_get_cursor(0))
-	PushToReg(fn .. ":" .. ln)
+  local fn = vim.fn.expand('%:t')
+  local ln, _ = unpack(vim.api.nvim_win_get_cursor(0))
+  PushToReg(fn .. ":" .. ln)
 end)
