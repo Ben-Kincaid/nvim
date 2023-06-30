@@ -38,6 +38,8 @@ local copilot = require('bkincaid.plugins.copilot');
 local toggleterm = require('bkincaid.plugins.toggleterm');
 local gitsigns = require('bkincaid.plugins.gitsigns');
 local treesitter_context = require('bkincaid.plugins.treesitter-context')
+local dap = require('bkincaid.plugins.dap.init')
+local dap_js = require('bkincaid.plugins.dap.js')
 
 -- Create table of plugin configs
 local plugins = {
@@ -116,7 +118,11 @@ local plugins = {
 	toggleterm,
 
 	-- Git signs
-	gitsigns
+	gitsigns,
+
+  -- Debugger
+  dap,
+  dap_js
 }
 
 -- Initialize lazy with plugins
