@@ -13,6 +13,8 @@ This repo contains my daily neovim config. It is built to provide a robust progr
   - Manage remote Github issues/PR's via [octo.nvim](https://github.com/pwntester/octo.nvim).
 - Performant fuzzy finding & file search via [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim), enhanced with the [telescope-fzf-native.nvim](https://github.com/nvim-telescope/telescope-fzf-native.nvim) for 🔥blazingly🔥 fast performance.
 - UI enhancements such as a pretty buffer line ([bufferline.nvim](https://github.com/akinsho/bufferline.nvim)), status line ([lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)), file tree explorer ([nvim-tree.nvim](https://github.com/nvim-tree/nvim-tree.lua)), and cool notifications ([nvim-notify](https://github.com/rcarriga/nvim-notify)). 
+- Debugger support via ([nvim-dap](https://github.com/mfussenegger/nvim-dap)).
+  - Debug tools for Javascript & Typescript projects, running in Node or the browser (via [vscode-js-debug](https://github.com/microsoft/vscode-js-debug) and [nvim-dap-vscode-js](https://github.com/mxsdev/nvim-dap-vscode-js)).
 - Many more handy plugins (See: [lua/bkincaid/plugins/init.lua](lua/bkincaid/plugins/init.lua) ) & remaps for a general programming & productivity-focused workflow.
 
 #### Directory structure
