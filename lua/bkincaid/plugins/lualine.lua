@@ -3,7 +3,8 @@ local M = {
 }
 
 function M.config()
-  local disabled_filetypes = { 'packer', 'NvimTree', 'alpha' }
+  local disabled_filetypes = { 'packer', 'NvimTree', 'alpha', 'dapui_watches', 'dapui_stacks', 'dapui_breakpoints',
+    'dapui_scopes', 'dap-repl', 'dapui_console' }
   local disabled_win_filetypes = { 'packer', 'NvimTree', 'alpha', 'gitcommit', 'help', 'fugitive' }
 
   require('lualine').setup({
@@ -28,7 +29,7 @@ function M.config()
     inactive_winbar = {
       lualine_c = { { 'filename', file_status = true, path = 1 } }
     },
-    extensions = { 'fugitive', 'quickfix' }
+    extensions = { 'fugitive', 'quickfix', 'nvim-dap-ui' }
   })
 end
 
