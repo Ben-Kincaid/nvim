@@ -11,11 +11,11 @@ function M.config()
   vim.fn.sign_define('DapStopped',
     { text = '⭐️', texthl = '', linehl = '', numhl = '' })
 
-  -- Key mappings
+  -- Debug key mappings
   vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
   vim.keymap.set("n", "<leader>dc", dap.continue)
   vim.keymap.set("n", "<leader>ds", dap.step_over)
-  vim.keymap.set("n", "<leader>dS", dap.step_into)
+  vim.keymap.set("n", "<leader>di", dap.step_into)
   vim.keymap.set("n", "<leader>do", dap.repl.open)
   vim.keymap.set("n", "<leader>dh", require("dap.ui.widgets").hover)
 end
