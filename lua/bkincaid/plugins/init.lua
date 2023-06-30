@@ -1,14 +1,14 @@
 -- Install lazy.nvim automatically
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -40,89 +40,91 @@ local gitsigns = require('bkincaid.plugins.gitsigns');
 local treesitter_context = require('bkincaid.plugins.treesitter-context')
 local dap = require('bkincaid.plugins.dap.init')
 local dap_js = require('bkincaid.plugins.dap.js')
+local dap_ui = require('bkincaid.plugins.dap.ui')
 
 -- Create table of plugin configs
 local plugins = {
-	-- Core plugins
-	{ 'nvim-lua/plenary.nvim' },      -- helper library used by multiple plugins,
-	{ 'nvim-tree/nvim-web-devicons' }, -- Enhanced font icons
+  -- Core plugins
+  { 'nvim-lua/plenary.nvim' },       -- helper library used by multiple plugins,
+  { 'nvim-tree/nvim-web-devicons' }, -- Enhanced font icons
 
-	-- Colors
-	colorscheme, -- Setup & define color scheme
-	colorizer,  -- Plugin for visualizing hex/rgb colors
+  -- Colors
+  colorscheme, -- Setup & define color scheme
+  colorizer,   -- Plugin for visualizing hex/rgb colors
 
-	-- Fuzzy finding, grep search, buffer mgmt
-	telescope,
-	{ 'junegunn/fzf',                             build = ":call fzf#install()" },
-	{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Allows us to use fzf as picker for telescope
+  -- Fuzzy finding, grep search, buffer mgmt
+  telescope,
+  { 'junegunn/fzf',                             build = ":call fzf#install()" },
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Allows us to use fzf as picker for telescope
 
-	-- Status line
-	lualine,
+  -- Status line
+  lualine,
 
-	-- Bufferline
-	bufferline,
+  -- Bufferline
+  bufferline,
 
-	-- Treesitter
-	treesitter,
+  -- Treesitter
+  treesitter,
   treesitter_context,
 
-	-- File Explorer
-	nvimtree,
+  -- File Explorer
+  nvimtree,
 
-	-- Fugitive (git)
-	fugitive,
+  -- Fugitive (git)
+  fugitive,
 
-	-- Octo (manage GH issues/PR's)
-	octo,
+  -- Octo (manage GH issues/PR's)
+  octo,
 
-	-- LSP (mason for lsp management, mason-lspconfig for integration, nvim-lspconfig for lsp setup)
-	mason,
-	masonlsp,
-	lsp,
+  -- LSP (mason for lsp management, mason-lspconfig for integration, nvim-lspconfig for lsp setup)
+  mason,
+  masonlsp,
+  lsp,
 
-	-- Snippets
-	luasnip,
+  -- Snippets
+  luasnip,
 
-	-- Completion
-	cmp,
-	{ 'hrsh7th/cmp-buffer' },      -- Completion for buffer content
-	{ 'hrsh7th/cmp-path' },        -- Completion for filesystem paths
-	{ 'hrsh7th/cmp-nvim-lsp' },    -- Completion for lsp
-	{ 'saadparwaiz1/cmp_luasnip' }, -- Completion for snippets
+  -- Completion
+  cmp,
+  { 'hrsh7th/cmp-buffer' },       -- Completion for buffer content
+  { 'hrsh7th/cmp-path' },         -- Completion for filesystem paths
+  { 'hrsh7th/cmp-nvim-lsp' },     -- Completion for lsp
+  { 'saadparwaiz1/cmp_luasnip' }, -- Completion for snippets
 
-	-- Start screen
-	alpha,
+  -- Start screen
+  alpha,
 
-	-- Markdown Preview
-	markdown_preview,
+  -- Markdown Preview
+  markdown_preview,
 
-	-- Marks
-	marks,
+  -- Marks
+  marks,
 
-	-- Null ls & related plugins
-	null,
+  -- Null ls & related plugins
+  null,
 
-	-- Notify
-	notify,
+  -- Notify
+  notify,
 
-	-- Help in floating window
-	yuphelp,
+  -- Help in floating window
+  yuphelp,
 
-	-- Copilot
-	copilot,
+  -- Copilot
+  copilot,
 
-	-- Comments
-	{ 'tpope/vim-commentary' },
+  -- Comments
+  { 'tpope/vim-commentary' },
 
-	-- Integrated terminal 
-	toggleterm,
+  -- Integrated terminal
+  toggleterm,
 
-	-- Git signs
-	gitsigns,
+  -- Git signs
+  gitsigns,
 
   -- Debugger
   dap,
-  dap_js
+  dap_js,
+  dap_ui
 }
 
 -- Initialize lazy with plugins
