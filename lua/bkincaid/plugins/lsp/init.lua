@@ -11,11 +11,6 @@ function M.config()
 
   -- Rust
   lspconfig.rust_analyzer.setup {
-    settings = {
-      ['rust-analyzer'] = {
-
-      },
-    },
   }
 
   -- TS/JS
@@ -61,7 +56,7 @@ function M.config()
   }
 
   -- ESLint
-  lspconfig.eslint.setup{}
+  lspconfig.eslint.setup {}
 
   -- CSS
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -69,6 +64,10 @@ function M.config()
   lspconfig.cssls.setup {
     capabilities = capabilities,
   }
+
+  -- Tailwind
+  lspconfig.tailwindcss.setup {}
+
 
   -- JSON
   lspconfig.jsonls.setup {
