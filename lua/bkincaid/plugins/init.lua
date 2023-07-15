@@ -38,7 +38,7 @@ local copilot = require('bkincaid.plugins.copilot');
 local toggleterm = require('bkincaid.plugins.toggleterm');
 local gitsigns = require('bkincaid.plugins.gitsigns');
 local treesitter_context = require('bkincaid.plugins.treesitter-context')
-local dap = require('bkincaid.plugins.dap.init')
+local dap = require('bkincaid.plugins.dap')
 local dap_js = require('bkincaid.plugins.dap.js')
 local dap_ui = require('bkincaid.plugins.dap.ui')
 

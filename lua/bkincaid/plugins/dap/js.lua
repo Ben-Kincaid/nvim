@@ -35,7 +35,7 @@ function M.config()
 
   -- Register JS/TS configurations
   for _, language in ipairs({ "typescript", "typescriptreact", "javascript", "javascriptreact" }) do
-    require("dap").configurations[language] = {
+    dap.configurations[language] = {
       -- Run the current buffer via node in inspect mode
       {
         type = "pwa-node",
