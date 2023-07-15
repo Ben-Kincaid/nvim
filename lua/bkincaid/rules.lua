@@ -29,3 +29,5 @@ vim.opt.updatetime = 50
 vim.opt.wrap = false
 
 vim.g.editorconfig = true
+
+vim.opt.fillchars:append('eob: ')
