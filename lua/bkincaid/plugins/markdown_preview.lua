@@ -10,7 +10,7 @@ local browser_priorities = { "brave", "chrome", "firefox" }
 function CheckDirExists(dir)
   local ok, err, code = os.rename(dir, dir)
   if not ok then
-    if code == 1 then
+    if code == 2 then
       -- Permission denied, but it exists
       return true, err
     end
