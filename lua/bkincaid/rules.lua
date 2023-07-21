@@ -31,3 +31,12 @@ vim.opt.wrap = false
 vim.g.editorconfig = true
 
 vim.opt.fillchars:append('eob: ')
+
+
+-- Automatically set wrap on .md/.txt files
+local group = vim.api.nvim_create_augroup("Text File Wrap Settings", { clear = true })
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = { '*.md', '*.txt' },
+  group = group,
+  command = 'setlocal wrap'
+})
