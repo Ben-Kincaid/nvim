@@ -66,6 +66,11 @@ function M.config()
   vim.keymap.set("n", "<leader>F", builtin.grep_string, {})
   -- View all active marks
   vim.keymap.set("n", "<leader>m", builtin.marks, {})
+  -- Search in current buffer directory
+  vim.keymap.set('n', '<leader>iD', function()
+    local bwd = vim.fn.expand("%:p:h")
+    builtin.live_grep({ cwd = bwd })
+  end)
   -- Search in directory relative to project root
   vim.keymap.set('n', '<leader>id', function()
     -- Check if a given path actually exists
