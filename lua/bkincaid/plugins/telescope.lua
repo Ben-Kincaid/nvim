@@ -7,12 +7,15 @@ local M = {
 
 function M.config()
   local builtin = require('telescope.builtin')
-
+  local Path = require "plenary.path"
   local mini_dropdown = {
     results_title = false,
     preview_title = false,
     theme = "dropdown",
     previewer = false,
+    path_display = {
+      'truncate'
+    },
     layout_config = {
       anchor = "N",
       width = 90
@@ -21,6 +24,9 @@ function M.config()
 
   local bottom_panel = {
     theme = 'ivy',
+    path_display = {
+      'truncate'
+    },
     layout_config = {
       height = 40,
       prompt_position = "top",
@@ -35,12 +41,6 @@ function M.config()
       help_tags = bottom_panel,
       buffers = mini_dropdown,
       grep_string = bottom_panel,
-    },
-    path_display = {
-      shorten = {
-        len = 3, exclude = { 1, -1 }
-      },
-      truncate = true,
     },
     extensions = {
       fzf = {
@@ -69,7 +69,11 @@ function M.config()
   -- Search in current buffer directory
   vim.keymap.set('n', '<leader>iD', function()
     local bwd = vim.fn.expand("%:p:h")
-    builtin.live_grep({ cwd = bwd })
+    local shortened_bwd = Path:new(bwd):make_relative()
+    if string.len(bwd) > 60 then
+      shortened_bwd = vim.fn.pathshorten(shortened_bwd)
+    end
+    builtin.live_grep({ cwd = bwd, prompt_title = "Search in directory: " .. shortened_bwd })
   end)
   -- Search in directory relative to project root
   vim.keymap.set('n', '<leader>id', function()
@@ -95,7 +99,7 @@ function M.config()
       local ok = exists(cwd)
 
       if ok then
-        builtin.live_grep({ cwd = cwd })
+        builtin.live_grep({ cwd = cwd, prompt_title = "Search in directory: " .. cwd })
       else
         vim.notify('"' .. cwd .. '" Does not exist.', vim.log.levels.ERROR, { title = "Search in directory" })
       end
