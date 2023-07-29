@@ -24,10 +24,10 @@ function M.config()
       }
     },
     winbar = {
-      lualine_c = { { 'filename', file_status = true, path = 1 } }
+      lualine_c = { { 'filename', file_status = true, path = 4 } }
     },
     inactive_winbar = {
-      lualine_c = { { 'filename', file_status = true, path = 1 } }
+      lualine_c = { { 'filename', file_status = true, path = 4 } }
     },
     extensions = { 'fugitive', 'quickfix', 'nvim-dap-ui' }
   })
