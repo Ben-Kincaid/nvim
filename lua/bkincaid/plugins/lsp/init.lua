@@ -99,6 +99,9 @@ function M.config()
     }
   }
 
+  -- Ruby
+  lspconfig.solargraph.setup {}
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
