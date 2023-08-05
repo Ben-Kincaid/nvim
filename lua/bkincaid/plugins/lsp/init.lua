@@ -102,6 +102,9 @@ function M.config()
   -- Ruby
   lspconfig.solargraph.setup {}
 
+  -- Marksman
+  lspconfig.marksman.setup {}
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
