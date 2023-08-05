@@ -13,11 +13,7 @@ function M.config()
     sources = {
       null.builtins.formatting.pint,
       null.builtins.formatting.phpcsfixer,
-      null.builtins.formatting.prettierd.with({
-        condition = function(utils)
-          return utils.root_has_file({ ".prettierrc", ".prettierrc.json" })
-        end
-      }),
+      null.builtins.formatting.prettierd,
     }
   })
 end
