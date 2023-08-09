@@ -105,6 +105,11 @@ function M.config()
   -- Marksman
   lspconfig.marksman.setup {}
 
+  -- OCaml
+  lspconfig.ocamllsp.setup {}
+
+
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
