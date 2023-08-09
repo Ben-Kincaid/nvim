@@ -21,7 +21,7 @@ local telescope = require('bkincaid.plugins.telescope')
 local lualine = require('bkincaid.plugins.lualine')
 local bufferline = require('bkincaid.plugins.bufferline')
 local treesitter = require('bkincaid.plugins.treesitter')
-local nvimtree = require('bkincaid.plugins.nvimtree')
+local mini_files = require('bkincaid.plugins.mini-files')
 local fugitive = require('bkincaid.plugins.fugitive')
 local lsp = require('bkincaid.plugins.lsp')
 local mason = require('bkincaid.plugins.mason')
@@ -69,7 +69,7 @@ local plugins = {
   treesitter_context,
 
   -- File Explorer
-  nvimtree,
+  mini_files,
 
   -- Fugitive (git)
   fugitive,
