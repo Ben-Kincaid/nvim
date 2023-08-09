@@ -41,6 +41,7 @@ local treesitter_context = require('bkincaid.plugins.treesitter-context')
 local dap = require('bkincaid.plugins.dap')
 local dap_js = require('bkincaid.plugins.dap.js')
 local dap_ui = require('bkincaid.plugins.dap.ui')
+local obsidian = require('bkincaid.plugins.obsidian')
 
 -- Create table of plugin configs
 local plugins = {
@@ -124,7 +125,10 @@ local plugins = {
   -- Debugger
   dap,
   dap_js,
-  dap_ui
+  dap_ui,
+
+  -- Obsidian integration
+  obsidian
 }
 
 -- Initialize lazy with plugins
