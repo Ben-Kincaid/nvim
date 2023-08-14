@@ -1,13 +1,13 @@
 local M = {
   "epwalsh/obsidian.nvim",
   lazy = true,
-  event = { "BufReadPre " .. vim.fn.expand "~" .. "/Notes/NoteJournal/**.md" },
+  event = { "BufReadPre " .. vim.fn.expand "~" .. "/Vaults/NoteJournal/**.md" },
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope.nvim"
   },
   opts = {
-    dir = '~/Notes/NoteJournal',
+    dir = '~/Vaults/NoteJournal',
     daily_notes = {
       folder = 'daily',
       date_format = '%Y-%m-%d',

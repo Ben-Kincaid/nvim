@@ -1,6 +1,6 @@
 -- Create fmt group & save FOS var to track format-on-save setting
 local fmt_group = vim.api.nvim_create_augroup('UserLspFormat', {})
-local fos = true;
+local fos = false;
 
 -- ## Global LSP mappings ##
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

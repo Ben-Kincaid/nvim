@@ -21,7 +21,7 @@ local telescope = require('bkincaid.plugins.telescope')
 local lualine = require('bkincaid.plugins.lualine')
 local bufferline = require('bkincaid.plugins.bufferline')
 local treesitter = require('bkincaid.plugins.treesitter')
-local mini_files = require('bkincaid.plugins.mini-files')
+local oil = require('bkincaid.plugins.oil')
 local fugitive = require('bkincaid.plugins.fugitive')
 local lsp = require('bkincaid.plugins.lsp')
 local mason = require('bkincaid.plugins.mason')
@@ -30,7 +30,6 @@ local marks = require('bkincaid.plugins.marks')
 local luasnip = require('bkincaid.plugins.luasnip');
 local cmp = require('bkincaid.plugins.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
-local null = require('bkincaid.plugins.null');
 local notify = require('bkincaid.plugins.notify');
 local octo = require('bkincaid.plugins.octo');
 local yuphelp = require('bkincaid.plugins.yuphelp');
@@ -42,6 +41,7 @@ local dap = require('bkincaid.plugins.dap')
 local dap_js = require('bkincaid.plugins.dap.js')
 local dap_ui = require('bkincaid.plugins.dap.ui')
 local obsidian = require('bkincaid.plugins.obsidian')
+local fmtr = require('bkincaid.plugins.fmtr')
 
 -- Create table of plugin configs
 local plugins = {
@@ -69,7 +69,7 @@ local plugins = {
   treesitter_context,
 
   -- File Explorer
-  mini_files,
+  oil,
 
   -- Fugitive (git)
   fugitive,
@@ -101,9 +101,6 @@ local plugins = {
   -- Marks
   marks,
 
-  -- Null ls & related plugins
-  null,
-
   -- Notify
   notify,
 
@@ -128,7 +125,10 @@ local plugins = {
   dap_ui,
 
   -- Obsidian integration
-  obsidian
+  obsidian,
+
+  -- Formatter
+ fmtr
 }
 
 -- Initialize lazy with plugins
