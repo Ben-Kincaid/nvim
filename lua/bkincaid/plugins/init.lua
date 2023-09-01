@@ -73,6 +73,7 @@ local plugins = {
 
   -- Fugitive (git)
   fugitive,
+  { 'tpope/vim-rhubarb' },
 
   -- Octo (manage GH issues/PR's)
   octo,
