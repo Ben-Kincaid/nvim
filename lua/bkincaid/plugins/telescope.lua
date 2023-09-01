@@ -8,7 +8,8 @@ local M = {
 function M.config()
   local builtin = require('telescope.builtin')
   local Path = require "plenary.path"
-  local mini_dropdown = {
+  local file_dropdown = {
+    find_command = { 'rg', '--files', '--hidden', '-g', '!.git' },
     results_title = false,
     preview_title = false,
     theme = "dropdown",
@@ -22,7 +23,7 @@ function M.config()
     }
   }
 
-  local bottom_panel = {
+  local search_panel = {
     theme = 'ivy',
     path_display = {
       'truncate'
@@ -35,12 +36,12 @@ function M.config()
 
   require('telescope').setup {
     pickers = {
-      find_files = mini_dropdown,
-      marks = bottom_panel,
-      live_grep = bottom_panel,
-      help_tags = bottom_panel,
-      buffers = mini_dropdown,
-      grep_string = bottom_panel,
+      find_files = file_dropdown,
+      marks = search_panel,
+      live_grep = search_panel,
+      help_tags = search_panel,
+      buffers = file_dropdown,
+      grep_string = search_panel,
     },
     extensions = {
       fzf = {
@@ -48,7 +49,21 @@ function M.config()
         override_generic_sorter = true,
         override_file_sorter = true,
         case_mode = "smart_case"
-      }
+      },
+    },
+    defaults = {
+      vimgrep_arguments = {
+        'rg',
+        '--color=never',
+        '--no-heading',
+        '--with-filename',
+        '--line-number',
+        '--column',
+        '--smart-case',
+        '--hidden',
+        '--glob',
+        '!**/.git/**'
+      },
     }
   }
 
