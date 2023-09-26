@@ -1,7 +1,7 @@
 local M = {
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
-	version = "v.1.*",
+	version = "v2.0.0",
 	-- install jsregexp (optional!:).
 	build = "make install_jsregexp"
 }
