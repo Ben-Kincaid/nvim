@@ -72,7 +72,9 @@ function M.config()
   }
 
   -- Tailwind
-  lspconfig.tailwindcss.setup {}
+  lspconfig.tailwindcss.setup {
+    capabilities = capabilities
+  }
 
 
   -- JSON
