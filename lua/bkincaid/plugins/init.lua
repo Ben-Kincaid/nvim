@@ -28,7 +28,7 @@ local mason = require('bkincaid.plugins.mason')
 local masonlsp = require('bkincaid.plugins.masonlsp')
 local marks = require('bkincaid.plugins.marks')
 local luasnip = require('bkincaid.plugins.luasnip');
-local cmp = require('bkincaid.plugins.cmp');
+local cmp = require('bkincaid.plugins.lsp.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
 local notify = require('bkincaid.plugins.notify');
 local octo = require('bkincaid.plugins.octo');
@@ -83,15 +83,12 @@ local plugins = {
   masonlsp,
   lsp,
 
+  -- Completion
+  cmp,
+
   -- Snippets
   luasnip,
 
-  -- Completion
-  cmp,
-  { 'hrsh7th/cmp-buffer' },       -- Completion for buffer content
-  { 'hrsh7th/cmp-path' },         -- Completion for filesystem paths
-  { 'hrsh7th/cmp-nvim-lsp' },     -- Completion for lsp
-  { 'saadparwaiz1/cmp_luasnip' }, -- Completion for snippets
 
   -- Start screen
   alpha,

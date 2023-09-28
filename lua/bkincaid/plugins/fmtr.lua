@@ -1,18 +1,23 @@
 local M = { 'mhartington/formatter.nvim' }
 
 function M.config()
+  local prettier = require("formatter.defaults.prettierd")
+  local js = {
+    prettier,
+  }
+
+
   require('formatter').setup({
     logging = false,
     filetype = {
-      typescript = {
-        function()
-          return {
-            exe = "prettierd",
-            args = { vim.api.nvim_buf_get_name(0) },
-            stdin = true
-          }
-        end
-      },
+      typescript = js,
+      typescriptreact = js,
+      javascript = js,
+      javascriptreact = js,
+      json = { prettier },
+      css = { prettier },
+      scss = { prettier },
+      sass = { prettier }
     }
   })
 
