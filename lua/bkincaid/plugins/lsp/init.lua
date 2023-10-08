@@ -136,6 +136,15 @@ function M.config()
     end,
   })
 
+  -- Clang
+  lspconfig.clangd.setup {
+    capabilities = capabilities,
+    cmd = {
+      "clangd",
+      "--offset-encoding=utf-16",
+    },
+  }
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
