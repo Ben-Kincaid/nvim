@@ -72,7 +72,9 @@ function M.config()
   }
 
   -- Tailwind
-  lspconfig.tailwindcss.setup {}
+  lspconfig.tailwindcss.setup {
+    capabilities = capabilities
+  }
 
 
   -- JSON
@@ -155,14 +157,11 @@ function M.config()
       focusable = true,
       source = "always",
       header = "",
-      border = "rounded"
     },
   })
 
   -- ## Set hover window overrides
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded"
-  })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {})
 end
 
 return M
