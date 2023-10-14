@@ -106,7 +106,7 @@ function M.config()
     settings = {
       yaml = {
         schemas = {
-          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          ["https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json"] = "/.github/workflows/*",
         },
       },
     }
