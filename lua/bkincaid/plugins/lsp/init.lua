@@ -117,9 +117,13 @@ function M.config()
     capabilities = capabilities,
   }
 
-  -- Marksman
+  -- Markdown
   lspconfig.marksman.setup {
     capabilities = capabilities,
+  }
+  lspconfig.mdx_analyzer.setup {
+    capabilities = capabilities,
+    filetypes = {'mdx'}
   }
 
   -- OCaml
@@ -145,6 +149,12 @@ function M.config()
       "clangd",
       "--offset-encoding=utf-16",
     },
+  }
+
+  -- Elixir
+  lspconfig.elixirls.setup {
+    capabilities = capabilities,
+    cmd = {"~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh"}
   }
 
   -- ## Trigger remaps ##
