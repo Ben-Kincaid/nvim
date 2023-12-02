@@ -6,6 +6,7 @@ local M = {
 
 
 function M.config()
+  local trouble = require('trouble.providers.telescope')
   local builtin = require('telescope.builtin')
   local Path = require "plenary.path"
   local file_dropdown = {
@@ -52,6 +53,10 @@ function M.config()
       },
     },
     defaults = {
+      mappings = {
+        i = { ["<c-q>"] = trouble.open_with_trouble },
+        n = { ["<c-q>"] = trouble.open_with_trouble },
+      },
       vimgrep_arguments = {
         'rg',
         '--color=never',

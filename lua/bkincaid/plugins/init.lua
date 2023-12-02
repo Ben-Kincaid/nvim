@@ -42,6 +42,7 @@ local dap_js = require('bkincaid.plugins.dap.js')
 local dap_ui = require('bkincaid.plugins.dap.ui')
 local obsidian = require('bkincaid.plugins.obsidian')
 local fmtr = require('bkincaid.plugins.fmtr')
+local trouble = require('bkincaid.plugins.trouble') 
 
 -- Create table of plugin configs
 local plugins = {
@@ -126,7 +127,10 @@ local plugins = {
   obsidian,
 
   -- Formatter
- fmtr
+ fmtr,
+
+ -- Trouble (better quickfix lists + lsp diagnostics)
+ trouble
 }
 
 -- Initialize lazy with plugins
