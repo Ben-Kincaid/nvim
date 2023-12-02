@@ -6,6 +6,7 @@ local M = {
 
 function M.config()
   require("bufferline").setup {
+    highlights = require("catppuccin.groups.integrations.bufferline").get(),
     options = {
       separator_style = "slant",
       offsets = {
