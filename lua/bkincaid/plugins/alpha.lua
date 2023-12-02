@@ -6,14 +6,6 @@ local M = {
 function M.config()
   local alpha = require("alpha")
   local startify = require("alpha.themes.startify")
-  startify.section.header.val = {
-    "██████  ██   ██ ██ ███    ██  ██████  █████  ██ ██████ ",
-    "██   ██ ██  ██  ██ ████   ██ ██      ██   ██ ██ ██   ██",
-    "██████  █████   ██ ██ ██  ██ ██      ███████ ██ ██   ██",
-    "██   ██ ██  ██  ██ ██  ██ ██ ██      ██   ██ ██ ██   ██",
-    "██████  ██   ██ ██ ██   ████  ██████ ██   ██ ██ ██████ "
-  }
-
 
   -- Get human readable day of the week ("Tuesday", "Friday", etc.")
   local day = os.date("%A")
@@ -136,8 +128,6 @@ function M.config()
   startify.section.top_buttons.val = {
     startify.button("e", "New file", "<cmd>ene <CR>"),
   }
-  print(os.date("%A"));
-
 
   alpha.setup(startify.opts)
 
