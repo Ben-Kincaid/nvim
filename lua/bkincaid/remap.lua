@@ -25,6 +25,9 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 vim.keymap.set("n", "]b", "<cmd>bnext<cr>")
 vim.keymap.set("n", "[b", "<cmd>bprev<cr>")
 
+-- Close all other splits
+vim.keymap.set("n", "<leader>W", "<cmd>only<cr>")
+
 -- Map ctrl-c to esc
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
