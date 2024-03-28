@@ -34,6 +34,11 @@ function M.config()
     end
   })
 
+  -- Astro
+  lspconfig.astro.setup{
+    capabilities = capabilities
+  }
+
   -- Golang
   lspconfig.gopls.setup {
     capabilities = capabilities,

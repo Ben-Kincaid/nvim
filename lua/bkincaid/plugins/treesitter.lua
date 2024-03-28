@@ -4,7 +4,7 @@ function M.config()
 	require("nvim-treesitter.install").compilers = { "gcc-12" }
 	require 'nvim-treesitter.configs'.setup {
 		-- A list of parser names, or "all"
-		ensure_installed = { "c", "lua", "rust", "vim", "typescript", "javascript", "go", "php" },
+		ensure_installed = { "c", "lua", "rust", "vim", "typescript", "javascript", "go", "php", "astro" },
 
 		-- Install parsers synchronously (only applied to `ensure_installed`)
 		sync_install = false,

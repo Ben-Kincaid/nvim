@@ -1,7 +1,7 @@
 local M = { 'mhartington/formatter.nvim' }
 
 function M.config()
-  local prettier = require("formatter.defaults.prettierd")
+  local prettier = require("formatter.defaults.prettier")
   local js = {
     prettier,
   }
@@ -14,6 +14,7 @@ function M.config()
       typescriptreact = js,
       javascript = js,
       javascriptreact = js,
+      astro = js,
       json = { prettier },
       css = { prettier },
       scss = { prettier },
