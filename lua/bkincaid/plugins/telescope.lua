@@ -38,6 +38,7 @@ function M.config()
   require('telescope').setup {
     pickers = {
       find_files = file_dropdown,
+      commands = file_dropdown,
       marks = search_panel,
       live_grep = search_panel,
       help_tags = search_panel,
@@ -54,8 +55,8 @@ function M.config()
     },
     defaults = {
       mappings = {
-        i = { ["<c-q>"] = trouble.open_with_trouble },
-        n = { ["<c-q>"] = trouble.open_with_trouble },
+        i = { ["<c-t>"] = trouble.open_with_trouble },
+        n = { ["<c-t>"] = trouble.open_with_trouble },
       },
       vimgrep_arguments = {
         'rg',
@@ -86,6 +87,8 @@ function M.config()
   vim.keymap.set("n", "<leader>F", builtin.grep_string, {})
   -- View all active marks
   vim.keymap.set("n", "<leader>m", builtin.marks, {})
+  -- Open command palette
+  vim.keymap.set("n", "<C-p>", builtin.commands, {})
   -- Search in current buffer directory
   vim.keymap.set('n', '<leader>iD', function()
     local bwd = vim.fn.expand("%:p:h")
