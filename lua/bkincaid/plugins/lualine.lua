@@ -17,7 +17,7 @@ function M.config()
       lualine_z = { 'location' }
     },
     options = {
-      theme = 'catppuccin',
+      theme = 'gruvbox-material',
       disabled_filetypes = {
         statusline = disabled_filetypes,
         winbar = disabled_win_filetypes,
