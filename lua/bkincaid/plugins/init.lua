@@ -14,6 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 
 
 -- Require all plugin configs
+local harpoon = require('bkincaid.plugins.harpoon')
 local alpha = require('bkincaid.plugins.alpha')
 local colorscheme = require('bkincaid.plugins.colorscheme')
 local colorizer = require('bkincaid.plugins.colorizer')
@@ -130,7 +131,10 @@ local plugins = {
  fmtr,
 
  -- Trouble (better quickfix lists + lsp diagnostics)
- trouble
+ trouble,
+
+ -- Harpoon
+  harpoon
 }
 
 -- Initialize lazy with plugins
