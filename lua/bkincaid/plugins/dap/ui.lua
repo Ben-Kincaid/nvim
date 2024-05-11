@@ -1,4 +1,4 @@
-local M = { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap" } }
+local M = { "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } }
 
 function M.config()
   local dap, dapui = require("dap"), require("dapui")

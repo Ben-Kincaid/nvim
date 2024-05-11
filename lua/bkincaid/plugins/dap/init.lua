@@ -1,4 +1,4 @@
-local M = { 'mfussenegger/nvim-dap' }
+local M = { 'mfussenegger/nvim-dap', dependencies = { 'leoluz/nvim-dap-go' }}
 
 function M.config()
   local dap = require("dap")
@@ -58,6 +58,7 @@ function M.config()
     },
   }
 
+  require("dap-go").setup()
 
   -- Debug key mappings
   vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
