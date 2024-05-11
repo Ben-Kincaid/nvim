@@ -32,7 +32,6 @@ local luasnip = require('bkincaid.plugins.luasnip');
 local cmp = require('bkincaid.plugins.lsp.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
 local notify = require('bkincaid.plugins.notify');
-local octo = require('bkincaid.plugins.octo');
 local yuphelp = require('bkincaid.plugins.yuphelp');
 local copilot = require('bkincaid.plugins.copilot');
 local toggleterm = require('bkincaid.plugins.toggleterm');
@@ -40,10 +39,11 @@ local gitsigns = require('bkincaid.plugins.gitsigns');
 local treesitter_context = require('bkincaid.plugins.treesitter-context')
 local dap = require('bkincaid.plugins.dap')
 local dap_js = require('bkincaid.plugins.dap.js')
+local dap_go = require('bkincaid.plugins.dap.go')
 local dap_ui = require('bkincaid.plugins.dap.ui')
 local obsidian = require('bkincaid.plugins.obsidian')
 local fmtr = require('bkincaid.plugins.fmtr')
-local trouble = require('bkincaid.plugins.trouble') 
+local trouble = require('bkincaid.plugins.trouble')
 
 -- Create table of plugin configs
 local plugins = {
@@ -76,9 +76,6 @@ local plugins = {
   -- Fugitive (git)
   fugitive,
   { 'tpope/vim-rhubarb' },
-
-  -- Octo (manage GH issues/PR's)
-  octo,
 
   -- LSP (mason for lsp management, mason-lspconfig for integration, nvim-lspconfig for lsp setup)
   mason,
@@ -122,6 +119,7 @@ local plugins = {
   -- Debugger
   dap,
   dap_js,
+  dap_go,
   dap_ui,
 
   -- Obsidian integration
