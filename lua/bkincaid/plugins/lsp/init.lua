@@ -20,6 +20,12 @@ function M.config()
 
   -- TS/JS
   lspconfig.tsserver.setup {
+    root_dir = function(fname)
+      return lspconfig.util.root_pattern('tsconfig.json')(fname) or
+          not lspconfig.util.root_pattern('.flowconfig') and
+          lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname)
+    end,
+    single_file_support = false,
     capabilities = capabilities,
     settings = {
       diagnostics = {
@@ -35,7 +41,7 @@ function M.config()
   })
 
   -- Astro
-  lspconfig.astro.setup{
+  lspconfig.astro.setup {
     capabilities = capabilities
   }
 
@@ -55,13 +61,25 @@ function M.config()
     settings = {
       Lua = {
         runtime = {
-          version = 'LuaJIT'
+          version = 'Lua 5.4',
+          path = {
+            "?.lua",
+            "?/init.lua",
+            "/usr/local/share/lua/5.4/?.lua",
+          }
         },
         diagnostics = {
           globals = { 'vim' },
         },
         workspace = {
-          library = vim.api.nvim_get_runtime_file("", true),
+          library = {
+            -- Get runtime files
+            vim.api.nvim_get_runtime_file("", true),
+            -- Load love2d lib
+            "${3rd}/love2d/library",
+            -- Load globally installed luarocks dependencies
+            "/usr/local/share/lua/5.4"
+          },
           checkThirdParty = false,
         },
         telemetry = {
@@ -128,7 +146,7 @@ function M.config()
   }
   lspconfig.mdx_analyzer.setup {
     capabilities = capabilities,
-    filetypes = {'mdx'}
+    filetypes = { 'mdx' }
   }
 
   -- OCaml
@@ -159,8 +177,15 @@ function M.config()
   -- Elixir
   lspconfig.elixirls.setup {
     capabilities = capabilities,
-    cmd = {"~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh"}
+    cmd = { "~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" }
   }
+
+  -- Flow
+  lspconfig.flow.setup {
+    capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern(".flowconfig", "flowconfig")
+  }
+
 
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
