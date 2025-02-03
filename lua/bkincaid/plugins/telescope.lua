@@ -6,7 +6,7 @@ local M = {
 
 
 function M.config()
-  local trouble = require('trouble.providers.telescope')
+  local trouble = require('trouble.sources.telescope')
   local builtin = require('telescope.builtin')
   local Path = require "plenary.path"
   local file_dropdown = {
@@ -52,11 +52,16 @@ function M.config()
         override_file_sorter = true,
         case_mode = "smart_case"
       },
+      -- ["google-calendar"] = {
+      --   client_id = os.getenv("NVIM_TELESCOPE_GOOGLE_CLIENT_ID"),
+      --   client_secret = os.getenv("NVIM_TELESCOPE_GOOGLE_CLIENT_SECRET"),
+      --   redirect_uri = "http://127.0.0.1:3456"
+      -- }
     },
     defaults = {
       mappings = {
-        i = { ["<c-t>"] = trouble.open_with_trouble },
-        n = { ["<c-t>"] = trouble.open_with_trouble },
+        i = { ["<c-t>"] = trouble.open },
+        n = { ["<c-t>"] = trouble.open },
       },
       vimgrep_arguments = {
         'rg',
@@ -73,7 +78,6 @@ function M.config()
     }
   }
 
-  require('telescope').load_extension('fzf');
 
   -- Find file in cwd
   vim.keymap.set('n', '<leader>o', builtin.find_files, {})
@@ -128,6 +132,14 @@ function M.config()
       end
     end)
   end)
+
+
+  -- Open today's calendar events
+  -- vim.keymap.set('n', '<leader>cc', '<cmd>:Telescope google-calendar calendar<cr>')
+
+  -- Explicitly register any extensions
+  require('telescope').load_extension('fzf'); -- Use fzf for fuzzy finding
+  -- require('telescope').load_extension('google-calendar') -- Display google calendar events as a picker
 end
 
 return M

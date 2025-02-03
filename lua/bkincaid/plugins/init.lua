@@ -31,7 +31,6 @@ local marks = require('bkincaid.plugins.marks')
 local luasnip = require('bkincaid.plugins.luasnip');
 local cmp = require('bkincaid.plugins.lsp.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
-local notify = require('bkincaid.plugins.notify');
 local yuphelp = require('bkincaid.plugins.yuphelp');
 local copilot = require('bkincaid.plugins.copilot');
 local toggleterm = require('bkincaid.plugins.toggleterm');
@@ -44,7 +43,6 @@ local dap_ui = require('bkincaid.plugins.dap.ui')
 local obsidian = require('bkincaid.plugins.obsidian')
 local fmtr = require('bkincaid.plugins.fmtr')
 local trouble = require('bkincaid.plugins.trouble')
-
 -- Create table of plugin configs
 local plugins = {
   -- Core plugins
@@ -98,9 +96,6 @@ local plugins = {
   -- Marks
   marks,
 
-  -- Notify
-  notify,
-
   -- Help in floating window
   yuphelp,
 
@@ -132,7 +127,7 @@ local plugins = {
  trouble,
 
  -- Harpoon
-  harpoon
+  harpoon,
 }
 
 -- Initialize lazy with plugins

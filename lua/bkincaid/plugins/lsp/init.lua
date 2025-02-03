@@ -1,5 +1,6 @@
 local M = {
   "neovim/nvim-lspconfig",
+  commit = "e5bf88e",
   lazy = false,
   priority = 902,
   dependencies = {
@@ -19,20 +20,10 @@ function M.config()
   }
 
   -- TS/JS
-  lspconfig.tsserver.setup {
-    root_dir = function(fname)
-      return lspconfig.util.root_pattern('tsconfig.json')(fname) or
-          not lspconfig.util.root_pattern('.flowconfig') and
-          lspconfig.util.root_pattern("tsconfig.json", "jsconfig.json", "package.json", ".git")(fname)
-    end,
-    single_file_support = false,
+  lspconfig.ts_ls.setup {
     capabilities = capabilities,
-    settings = {
-      diagnostics = {
-        ignoredCodes = { 8010, 8002, 8003, 8004, 8005, 8006, 8008, 8009, 8011, 8012, 8013, 8016 }
-      }
-    }
   }
+
   vim.api.nvim_create_autocmd("BufRead", {
     pattern = "tsconfig.json",
     callback = function()
@@ -42,7 +33,7 @@ function M.config()
 
   -- Astro
   lspconfig.astro.setup {
-    capabilities = capabilities
+    capabilities = capabilities,
   }
 
   -- Golang

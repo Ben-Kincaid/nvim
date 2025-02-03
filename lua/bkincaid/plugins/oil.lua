@@ -12,6 +12,10 @@ function M.config()
 
   oil.setup(
     {
+      columns = {
+        "icon",
+        {"size", highlight = "Blamer"}
+      },
       keymaps = {
         ["g?"] = "actions.show_help",
         ["<CR>"] = "actions.select",
