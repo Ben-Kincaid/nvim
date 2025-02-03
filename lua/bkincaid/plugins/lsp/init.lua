@@ -177,6 +177,10 @@ function M.config()
     root_dir = lspconfig.util.root_pattern(".flowconfig", "flowconfig")
   }
 
+  -- Biome
+  lspconfig.biome.setup {
+    capabilities = capabilities,
+  }
 
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')

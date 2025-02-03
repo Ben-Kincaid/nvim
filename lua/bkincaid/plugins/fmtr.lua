@@ -1,11 +1,20 @@
 local M = { 'mhartington/formatter.nvim' }
 
 function M.config()
-  local prettier = require("formatter.defaults.prettier")
-  local js = {
-    prettier,
-  }
+  local root_patterns = { 'biome.json' }
+  local biome_root_dir = vim.fs.dirname(vim.fs.find(root_patterns, { upward = true })[1])
 
+
+  -- Determine which formatter (biome or prettier) to use
+  local fmtr = require('formatter.defaults.prettier')
+  if biome_root_dir then
+    vim.notify('Using biome over prettier...')
+    fmtr = require('formatter.defaults.biome')
+  end
+
+  local js = {
+    fmtr,
+  }
 
   require('formatter').setup({
     logging = false,
@@ -15,13 +24,12 @@ function M.config()
       javascript = js,
       javascriptreact = js,
       astro = js,
-      json = { prettier },
-      css = { prettier },
-      scss = { prettier },
-      sass = { prettier }
+      json = { fmtr },
+      css = { fmtr },
+      scss = { fmtr },
+      sass = { fmtr }
     }
   })
-
 
   vim.cmd [[
     augroup FormatAutogroup
