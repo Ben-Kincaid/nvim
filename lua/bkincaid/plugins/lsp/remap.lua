@@ -23,11 +23,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gd', function() trouble.toggle("lsp_definitions") end, opts)
-    vim.keymap.set('n', 'gi', function ()
-     trouble.toggle("lsp_implementations")
-    end, opts)
-    vim.keymap.set("n", "gr", function() trouble.toggle("lsp_references") end, opts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
