@@ -63,13 +63,14 @@ function M.config()
           globals = { 'vim' },
         },
         workspace = {
+          ignoreSubmodules = false,
           library = {
             -- Get runtime files
             vim.api.nvim_get_runtime_file("", true),
             -- Load love2d lib
             "${3rd}/love2d/library",
             -- Load globally installed luarocks dependencies
-            "/usr/local/share/lua/5.4"
+            "/usr/local/share/lua/5.1/",
           },
           checkThirdParty = false,
         },

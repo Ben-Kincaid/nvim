@@ -43,6 +43,10 @@ local dap_ui = require('bkincaid.plugins.dap.ui')
 local obsidian = require('bkincaid.plugins.obsidian')
 local fmtr = require('bkincaid.plugins.fmtr')
 local trouble = require('bkincaid.plugins.trouble')
+local lint = require('bkincaid.plugins.lint')
+
+
+
 -- Create table of plugin configs
 local plugins = {
   -- Core plugins
@@ -56,7 +60,7 @@ local plugins = {
   -- Fuzzy finding, grep search, buffer mgmt
   telescope,
   { 'junegunn/fzf',                             build = ":call fzf#install()" },
-  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }, -- Allows us to use fzf as picker for telescope
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
 
   -- Status line
   lualine,
@@ -128,6 +132,9 @@ local plugins = {
 
  -- Harpoon
   harpoon,
+
+  -- nvim-lint
+  lint,
 }
 
 -- Initialize lazy with plugins
