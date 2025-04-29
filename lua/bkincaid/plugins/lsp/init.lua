@@ -183,6 +183,9 @@ function M.config()
     capabilities = capabilities,
   }
 
+  -- Teal
+  lspconfig.teal_ls.setup {}
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
