@@ -184,7 +184,11 @@ function M.config()
   }
 
   -- Teal
-  lspconfig.teal_ls.setup {}
+  lspconfig.teal_ls.setup {
+    capabilities = capabilities,
+    filetypes = { "teal" },
+    root_dir = lspconfig.util.root_pattern("tlconfig.lua", ".git"),
+  }
 
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
