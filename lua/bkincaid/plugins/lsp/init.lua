@@ -191,8 +191,14 @@ function M.config()
     root_dir = lspconfig.util.root_pattern("tlconfig.lua", ".git"),
   }
 
+  -- GDScript
+  lspconfig.gdscript.setup {
+    capabilities = capabilities,
+  }
+
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
+
 
   -- ## Set up diagnostic config ##
   vim.diagnostic.config({
