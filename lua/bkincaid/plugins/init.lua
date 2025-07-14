@@ -125,16 +125,21 @@ local plugins = {
   obsidian,
 
   -- Formatter
- fmtr,
+  fmtr,
 
- -- Trouble (better quickfix lists + lsp diagnostics)
- trouble,
+  -- Trouble (better quickfix lists + lsp diagnostics)
+  trouble,
 
- -- Harpoon
+  -- Harpoon
   harpoon,
 
   -- nvim-lint
   lint,
+
+  -- nvim-jdtls
+  {
+    'mfussenegger/nvim-jdtls',
+  }
 }
 
 -- Initialize lazy with plugins

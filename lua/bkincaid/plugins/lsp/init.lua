@@ -5,6 +5,7 @@ local M = {
   priority = 902,
   dependencies = {
     'hrsh7th/nvim-cmp',
+    'mfussenegger/nvim-jdtls',
   }
 }
 
