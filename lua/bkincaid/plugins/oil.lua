@@ -12,9 +12,36 @@ function M.config()
 
   oil.setup(
     {
+      view_options = {
+        show_hidden = true,
+        is_hidden_file = function(name, bufnr)
+          -- Hide files that start with a dot
+          if name:sub(1, 1) == "." then
+            return true
+          end
+
+          -- Hide files that end with .uid
+          if vim.endswith(name, ".uid") then
+            return true
+          end
+
+          -- Hide files that are defined in .gitignore in a performance-friendly way
+          if vim.fn.filereadable(".gitignore") == 1 then
+            local gitignore = vim.fn.readfile(".gitignore")
+            for _, pattern in ipairs(gitignore) do
+              if vim.fn.glob(pattern) == name then
+                return true
+              end
+            end
+          end
+
+
+          return false
+        end,
+      },
       columns = {
         "icon",
-        {"size", highlight = "Blamer"}
+        { "size", highlight = "Blamer" }
       },
       keymaps = {
         ["g?"] = "actions.show_help",
