@@ -193,8 +193,9 @@ function M.config()
 
   -- GDScript
   lspconfig.gdscript.setup {
-    capabilities = capabilities,
+    cmd = { "godot-wsl-lsp", "--useMirroredNetworking" },
   }
+
 
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
