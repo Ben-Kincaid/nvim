@@ -27,7 +27,16 @@ function M.config()
       json = { fmtr },
       css = { fmtr },
       scss = { fmtr },
-      sass = { fmtr }
+      sass = { fmtr },
+      gdscript = {
+        function()
+          return {
+            exe = "gdformat",
+            args = { "-" }, -- Read from stdin
+            stdin = true,
+          }
+        end
+      }
     }
   })
 

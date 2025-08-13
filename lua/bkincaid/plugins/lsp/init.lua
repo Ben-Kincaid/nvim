@@ -193,7 +193,7 @@ function M.config()
 
   -- GDScript
   lspconfig.gdscript.setup {
-    cmd = { "godot-wsl-lsp", "--useMirroredNetworking" },
+    cmd = { "godot-wsl-lsp", "--useMirroredNetworking", "--experimentalFastPathConversion" },
   }
 
 
