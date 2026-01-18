@@ -17,7 +17,7 @@ function M.config()
     type = 'executable',
     command = 'node',
     args = {
-      require('mason-registry').get_package('php-debug-adapter'):get_install_path() .. "/extension/out/phpDebug.js"
+      vim.fn.expand('$MASON/packages/php-debug-adapter/extensions/out/phpDebug.js'),
     }
   }
 
@@ -37,7 +37,8 @@ function M.config()
     port = "${port}",
     executable = {
       -- CHANGE THIS to your path!
-      command = require('mason-registry').get_package('codelldb'):get_install_path() .. '/extension/adapter/codelldb',
+
+      command = vim.fn.expand('$MASON/packages/codelldb/extensions/adapter/codelldb'), 
       args = { "--port", "${port}" },
 
       -- On windows you may have to uncomment this:

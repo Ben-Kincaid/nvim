@@ -28,7 +28,6 @@ local lsp = require('bkincaid.plugins.lsp')
 local mason = require('bkincaid.plugins.mason')
 local masonlsp = require('bkincaid.plugins.masonlsp')
 local marks = require('bkincaid.plugins.marks')
-local luasnip = require('bkincaid.plugins.luasnip');
 local cmp = require('bkincaid.plugins.lsp.cmp');
 local markdown_preview = require('bkincaid.plugins.markdown_preview')
 local yuphelp = require('bkincaid.plugins.yuphelp');
@@ -86,10 +85,6 @@ local plugins = {
 
   -- Completion
   cmp,
-
-  -- Snippets
-  luasnip,
-
 
   -- Start screen
   alpha,
