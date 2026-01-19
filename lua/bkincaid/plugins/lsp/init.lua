@@ -1,6 +1,7 @@
 local M = {
+  -- nvim-lspconfig now only provides server configurations
+  -- LSP functionality is built into vim.lsp.config
   "neovim/nvim-lspconfig",
-  commit = "5bfcc89",
   lazy = false,
   priority = 902,
   dependencies = {
@@ -10,21 +11,26 @@ local M = {
 }
 
 function M.config()
-  -- ## nvim-lspconfig: Setup specific LSP servers ##
-  local lspconfig = require('lspconfig')
+  -- ## vim.lsp.config: Setup specific LSP servers ##
+  -- Load server configs from nvim-lspconfig (now just a config provider)
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
   capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+  -- Helper to start LSP client
+  local function start_lsp(server_name, config)
+    local cfg = vim.tbl_deep_extend('force', {
+      name = server_name,
+      capabilities = capabilities,
+    }, config or {})
+    vim.lsp.config(server_name, cfg)
+    vim.lsp.enable(server_name)
+  end
+
   -- Rust
-  lspconfig.rust_analyzer.setup {
-    capabilities = capabilities
-  }
+  start_lsp('rust_analyzer')
 
   -- TS/JS
-  lspconfig.ts_ls.setup {
-    capabilities = capabilities,
-  }
-
+  start_lsp('ts_ls')
   vim.api.nvim_create_autocmd("BufRead", {
     pattern = "tsconfig.json",
     callback = function()
@@ -33,123 +39,101 @@ function M.config()
   })
 
   -- Astro
-  lspconfig.astro.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('astro')
 
   -- Golang
-  lspconfig.gopls.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('gopls')
 
   -- PHP
-  lspconfig.phpactor.setup {
-    capabilities = capabilities
-  }
+  start_lsp('phpactor')
 
   -- Lua
-  lspconfig.lua_ls.setup {
-    capabilities = capabilities,
-    settings = {
-      Lua = {
+  start_lsp('lua_ls', {
+    on_init = function(client)
+      if client.workspace_folders then
+        local path = client.workspace_folders[1].name
+        if
+            path ~= vim.fn.stdpath('config')
+            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+        then
+          return
+        end
+      end
+
+      client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
         runtime = {
-          version = 'Lua 5.4',
+          version = 'LuaJIT',
           path = {
-            "?.lua",
-            "?/init.lua",
-            "/usr/local/share/lua/5.4/?.lua",
-          }
+            'lua/?.lua',
+            'lua/?/init.lua',
+          },
         },
         diagnostics = {
+          -- Get the language server to recognize the `vim` global
           globals = { 'vim' },
         },
+        -- Make the server aware of Neovim runtime files
         workspace = {
-          ignoreSubmodules = false,
-          library = {
-            -- Get runtime files
-            vim.api.nvim_get_runtime_file("", true),
-            -- Load love2d lib
-            "${3rd}/love2d/library",
-            -- Load globally installed luarocks dependencies
-            "/usr/local/share/lua/5.1/",
-          },
           checkThirdParty = false,
-        },
-        telemetry = {
-          enable = false,
+          library = {
+            vim.env.VIMRUNTIME
+          }
         }
-      }
+      })
+    end,
+    settings = {
+      Lua = {}
     }
-  }
+  })
 
   -- CSS
-  lspconfig.cssls.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('cssls')
 
   -- Tailwind
-  lspconfig.tailwindcss.setup {
-    capabilities = capabilities
-  }
-
+  start_lsp('tailwindcss')
 
   -- JSON
-  lspconfig.jsonls.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('jsonls')
 
   -- HTML
-  lspconfig.html.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('html')
 
   -- Svelte
-  lspconfig.svelte.setup {}
+  start_lsp('svelte')
 
   -- Scala
-  lspconfig.metals.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('metals')
 
   -- Terraform
-  lspconfig.terraformls.setup {
-    capabilities = capabilities
-  }
+  start_lsp('terraformls')
 
   -- YAML
-  lspconfig.yamlls.setup {
-    capabilities = capabilities,
+  start_lsp('yamlls', {
     settings = {
       yaml = {
         schemas = {
-          ["https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json"] = "/.github/workflows/*",
+          ["https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-workflow.json"] =
+          "/.github/workflows/*",
         },
       },
     }
-  }
+  })
 
   -- Ruby
-  lspconfig.solargraph.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('solargraph')
 
   -- Markdown
-  lspconfig.marksman.setup {
-    capabilities = capabilities,
-  }
-  lspconfig.mdx_analyzer.setup {
-    capabilities = capabilities,
+  start_lsp('marksman')
+
+  start_lsp('mdx_analyzer', {
     filetypes = { 'mdx' }
-  }
+  })
 
   -- OCaml
-  lspconfig.ocamllsp.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('ocamllsp')
 
   -- ESLint
-  lspconfig.eslint.setup({
-    capabilities = capabilities,
+  start_lsp('eslint', {
     on_attach = function(_, bufnr)
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
@@ -159,42 +143,37 @@ function M.config()
   })
 
   -- Clang
-  lspconfig.clangd.setup {
-    capabilities = capabilities,
+  start_lsp('clangd', {
     cmd = {
       "clangd",
       "--offset-encoding=utf-16",
     },
-  }
+  })
 
   -- Elixir
-  lspconfig.elixirls.setup {
-    capabilities = capabilities,
+  start_lsp('elixirls', {
     cmd = { "~/.local/share/nvim/mason/packages/elixir-ls/language_server.sh" }
-  }
+  })
 
   -- Flow
-  lspconfig.flow.setup {
-    capabilities = capabilities,
-    root_dir = lspconfig.util.root_pattern(".flowconfig", "flowconfig")
-  }
+  local lspconfig_util = require('lspconfig.util')
+  start_lsp('flow', {
+    root_dir = lspconfig_util.root_pattern(".flowconfig", "flowconfig")
+  })
 
   -- Biome
-  lspconfig.biome.setup {
-    capabilities = capabilities,
-  }
+  start_lsp('biome')
 
   -- Teal
-  lspconfig.teal_ls.setup {
-    capabilities = capabilities,
+  start_lsp('teal_ls', {
     filetypes = { "teal" },
-    root_dir = lspconfig.util.root_pattern("tlconfig.lua", ".git"),
-  }
+    root_dir = lspconfig_util.root_pattern("tlconfig.lua", ".git"),
+  })
 
   -- GDScript
-  lspconfig.gdscript.setup {
+  start_lsp('gdscript', {
     cmd = { "godot-wsl-lsp", "--useMirroredNetworking", "--experimentalFastPathConversion" },
-  }
+  })
 
 
   -- ## Trigger remaps ##
@@ -206,13 +185,10 @@ function M.config()
     severity_sort = true,
     float = {
       focusable = true,
-      source = "always",
+      source = true,
       header = "",
     },
   })
-
-  -- ## Set hover window overrides
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {})
 end
 
 return M
