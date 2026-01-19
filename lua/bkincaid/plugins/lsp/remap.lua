@@ -5,8 +5,16 @@ local fos = false;
 -- ## Global LSP mappings ##
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+vim.keymap.set('n', '[d', function()
+  vim.diagnostic.jump({ count = -1 })
+end
+)
+vim.keymap.set('n', ']d', function()
+  vim.diagnostic.jump({
+    count = 1,
+  })
+end
+)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
@@ -38,7 +46,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('v', '<leader>=', vim.lsp.buf.format, { silent = true, buffer = 0 })
 
     -- Trouble-specific LSP commands
-    vim.keymap.set('n', '<leader>t', function() trouble.toggle('document_diagnostics') end, opts) -- document diagnostics
+    vim.keymap.set('n', '<leader>t', function() trouble.toggle('document_diagnostics') end, opts)  -- document diagnostics
     vim.keymap.set('n', '<leader>T', function() trouble.toggle('workspace_diagnostics') end, opts) -- workspace diagnostics
 
     -- Handle dynamic "format on save" functionality

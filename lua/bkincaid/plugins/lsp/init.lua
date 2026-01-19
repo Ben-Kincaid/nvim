@@ -179,15 +179,14 @@ function M.config()
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
 
-
   -- ## Set up diagnostic config ##
   vim.diagnostic.config({
     severity_sort = true,
-    float = {
-      focusable = true,
-      source = true,
-      header = "",
-    },
+    jump = {
+      on_jump = function(_, bufnr)
+        vim.diagnostic.open_float({ bufnr = bufnr, focusable = true, focus = false })
+      end
+    }
   })
 end
 
