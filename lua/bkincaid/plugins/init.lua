@@ -102,7 +102,6 @@ local plugins = {
   copilot,
 
   -- Comments
-  { 'tpope/vim-commentary' },
 
   -- Integrated terminal
   toggleterm,
@@ -131,9 +130,13 @@ local plugins = {
   -- nvim-lint
   lint,
 
-  -- nvim-jdtls
+  -- Java
   {
-    'mfussenegger/nvim-jdtls',
+    'nvim-java/nvim-java',
+    config = function()
+      require('java').setup()
+      vim.lsp.enable('jdtls')
+    end,
   }
 }
 

@@ -1,10 +1,31 @@
+local is_vsc = vim.g.vscode
+
 vim.g.mapleader = " "
 
 -- Save & quit
-vim.keymap.set("n", "<leader>q", "<cmd>q<cr>")
-vim.keymap.set("n", "<leader>Q", "<cmd>:tabclose<cr>");
+if is_vsc then
+  local vsc = require('vscode')
+  -- File commands
+  vim.keymap.set("n", "<leader>q", function() vsc.action('workbench.action.closeActiveEditor') end)
+  vim.keymap.set("n", "<leader>X", function() vsc.action('workbench.action.closeOtherEditors') end)
+  vim.keymap.set("n", "<leader>o", function() vsc.action('workbench.action.quickOpen') end)
+  vim.keymap.set("n", "<leader>f", function() vsc.action('workbench.action.findInFiles') end)
+  vim.keymap.set("n", "<leader>p", function() vsc.action('workbench.action.showCommands') end)
+  vim.keymap.set("n", "<leader>b", function() vsc.action('workbench.action.toggleSidebarVisibility') end)
+  vim.keymap.set("n", "<leader><CR>", function() vsc.action('editor.action.formatDocument') end)
+
+
+  -- vanilla LSP commands
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename)
+  vim.keymap.set('n', ']d', function() vsc.action('editor.action.marker.nextInFiles') end)
+  vim.keymap.set('n', '[d', function() vsc.action('editor.action.marker.prevInFiles') end)
+else
+  vim.keymap.set("n", "<leader>q", "<cmd>q<cr>")
+  vim.keymap.set("n", "<leader>Q", "<cmd>:tabclose<cr>");
+  vim.keymap.set("n", "<leader>X", "<cmd>qa!<cr>")
+end
+
 vim.keymap.set("n", "<leader>s", "<cmd>w<cr>")
-vim.keymap.set("n", "<leader>X", "<cmd>qa!<cr>")
 
 -- Move selection up & down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")

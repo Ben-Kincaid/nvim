@@ -6,7 +6,6 @@ local M = {
   priority = 902,
   dependencies = {
     'hrsh7th/nvim-cmp',
-    'mfussenegger/nvim-jdtls',
   }
 }
 
@@ -175,9 +174,18 @@ function M.config()
     cmd = { "godot-wsl-lsp", "--useMirroredNetworking", "--experimentalFastPathConversion" },
   })
 
+  -- CSharp
+  --
+  local omnisharp_bin = vim.fn.expand('~/.local/share/nvim/mason/bin/omnisharp-mono')
+  local pid = vim.fn.getpid()
+
+  start_lsp('omnisharp', {
+    cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) },
+  })
 
   -- ## Trigger remaps ##
   require('bkincaid.plugins.lsp.remap')
+
 
   -- ## Set up diagnostic config ##
   vim.diagnostic.config({
