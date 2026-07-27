@@ -127,6 +127,8 @@ local plugins = {
   -- Harpoon
   harpoon,
 
+  {'mfussenegger/nvim-jdtls'},
+
   -- nvim-lint
   lint,
 
