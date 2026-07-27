@@ -127,19 +127,19 @@ local plugins = {
   -- Harpoon
   harpoon,
 
-  {'mfussenegger/nvim-jdtls'},
+  -- {'mfussenegger/nvim-jdtls'},
 
   -- nvim-lint
   lint,
 
   -- Java
-  {
-    'nvim-java/nvim-java',
-    config = function()
-      require('java').setup()
-      vim.lsp.enable('jdtls')
-    end,
-  }
+  -- {
+  --   'nvim-java/nvim-java',
+  --   config = function()
+  --     require('java').setup()
+  --     vim.lsp.enable('jdtls')
+  --   end,
+  -- }
 }
 
 -- Initialize lazy with plugins
