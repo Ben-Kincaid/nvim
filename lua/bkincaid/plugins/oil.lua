@@ -58,6 +58,10 @@ function M.config()
         ["`"] = "actions.cd",
         ["~"] = "actions.tcd",
         ["<C-i>"] = "actions.toggle_hidden",
+      },
+      lsp_file_methods = {
+        timeout_ms = 500,
+        autosave_changes = true
       }
     })
 

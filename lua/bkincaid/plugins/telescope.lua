@@ -50,7 +50,6 @@ function M.config()
         fuzzy = true,
         override_generic_sorter = true,
         override_file_sorter = true,
-        case_mode = "smart_case"
       },
       -- ["google-calendar"] = {
       --   client_id = os.getenv("NVIM_TELESCOPE_GOOGLE_CLIENT_ID"),
@@ -70,7 +69,6 @@ function M.config()
         '--with-filename',
         '--line-number',
         '--column',
-        '--smart-case',
         '--hidden',
         '--glob',
         '!**/.git/**'
