@@ -16,6 +16,7 @@ if is_vsc then
 
 
   -- vanilla LSP commands
+  vim.keymap.set('n', 'gr', function() vsc.action('editor.action.referenceSearch.trigger') end)
   vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename)
   vim.keymap.set('n', ']d', function() vsc.action('editor.action.marker.nextInFiles') end)
   vim.keymap.set('n', '[d', function() vsc.action('editor.action.marker.prevInFiles') end)
@@ -55,12 +56,12 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Replace all instances of cursor word
 vim.keymap.set("n", "<leader>R", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
-function PushToReg(str)
+local function PushToReg(str)
   vim.cmd('let @+="' .. str .. '"')
   vim.notify('Copied "' .. str .. '"!', vim.log.levels.INFO, { title = "File path copied." })
 end
 
-function CopyFile(absolute)
+local function CopyFile(absolute)
   local path
 
   -- Determine appropriate path depth
